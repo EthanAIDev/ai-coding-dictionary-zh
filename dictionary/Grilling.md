@@ -1,10 +1,11 @@
 ---
-description: A technique for developing a design concept: the agent interviews the user Socratically, one decision at a time.
+description: 一种开发设计概念的技术：智能体以苏格拉底式的方式采访用户，一次做出一个决定。
 ---
-A technique for developing a [design concept](./Design%20concept.md) with an [agent](./Agent.md): the agent interviews the user Socratically, one decision at a time, proposing a recommended answer for each. Slows the rush to a finished plan — no [handoff artifact](./Handoff%20artifact.md) is written until the concept stabilises.
 
-*Usage:*
+一种开发带有 [智能体（Agent）](./Agent.md) 的 [设计概念](./Design%20concept.md) 的技术：智能体以苏格拉底式的方式采访用户，一次一个决定，为每个决定提出一个推荐答案。减缓了完成计划的速度——在概念稳定之前不会编写[交接文档](./Handoff%20artifact.md)。
 
-"It went straight to writing the [spec](./Spec.md) and got the cancellation logic wrong."
+_用法：_
 
-"Grill it first — make it ask you about partial cancels, refunds, and timing before it commits anything to the doc. Cheaper to resolve in conversation than in code."
+“它直接写入 [规格文档（Spec）](./Spec.md) 并导致取消逻辑错误。”
+
+“先进行烧烤——让它在向文档提交任何内容之前询问您有关部分取消、退款和时间安排的信息。通过对话解决比通过代码更便宜。”

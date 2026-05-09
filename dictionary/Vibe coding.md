@@ -1,14 +1,15 @@
 ---
-description: A working pattern where the user accepts the agent's code without human review. The diff is treated as opaque.
+description: 一种工作方式：用户不做人工评审，主要以“能不能跑”作为验收标准。
 ---
-A working pattern where the user accepts the [agent](./Agent.md)'s code without [human review](./Human%20review.md). The diff is treated as opaque — what matters is whether the program behaves, not what's inside. [Automated review](./Automated%20review.md) and [automated checks](./Automated%20check.md) may still run; vibe coding is silent on both.
 
-*Avoid:* "vibe coding" as a synonym for "low-quality AI coding" — the term names the review stance, not the resulting code.
+[氛围编程](./Vibe%20coding.md) 指的是：用户接受[智能体（Agent）](./Agent.md)生成的代码，但不做[人工评审](./Human%20review.md)。在这种模式里，差异细节通常被视为黑盒，核心标准是“程序是否可用”。
 
-*Usage:*
+它不等于“没有任何检查”：你仍然可以保留[自动检查](./Automated%20check.md)和[自动评审](./Automated%20review.md)。
 
-"Did you read what it changed in the auth flow?"
+*避免：*把“氛围编程”当“低质量 AI 编码”的同义词。它描述的是审查策略，而不是结果质量本身。
 
-"Vibe coded it — login still works, that's all I checked."
+_用法：_
 
-"Read the diff before you push, vibing on auth is how secrets leak into logs."
+“这段登录流程你看过 diff 吗？”
+
+“没有，我是按氛围编程流程走的，主要验证功能是否正常。”

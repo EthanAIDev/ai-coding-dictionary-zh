@@ -1,16 +1,15 @@
 ---
-description: A deterministic verification that runs in the environment — tests, type checks, lints, build, pre-commit hooks. Pass/fail, no judgement.
+description: 自动检查是确定性验证（测试、类型检查、lint、构建等），结果是通过或失败。
 ---
-A deterministic verification that runs in the [environment](./Environment.md) — tests, type checks, lints, build, pre-commit hooks. Pass/fail, no judgement. The signal an [agent](./Agent.md) can self-correct from without involving anyone else. A flaky test is a broken check, not a non-check; automated checks are deterministic *by design*.
 
-*Avoid:* "feedback loop" / "backpressure" — both lump checks together with [review](./Automated%20review.md). *Avoid:* "test" — tests are automated checks, but not all automated checks are tests.
+[自动检查](./Automated%20check.md) 指的是在[环境](./Environment.md)中运行的确定性验证流程，例如测试、类型检查、lint、构建或 pre-commit 钩子。
 
-*Usage:*
+它的特点是结果明确：通过或失败，不依赖主观判断。与[自动评审](./Automated%20review.md)不同，自动检查不是“评价质量”，而是“校验规则是否满足”。
 
-"The agent keeps shipping broken code in the [AFK](./AFK.md) runs."
+*避免：*把自动检查和自动评审混称为“反馈循环”；两者职责不同。
 
-"What automated checks are wired into the [sandbox](./Sandbox.md)?"
+_用法：_
 
-"Just the unit tests."
+“AFK 跑完后经常提交坏代码。”
 
-"Add typecheck and lint — it'll self-correct from those before the PR ever lands."
+“先补齐类型检查和 lint。这样它能在 PR 合并前就基于失败信号自我修正。”

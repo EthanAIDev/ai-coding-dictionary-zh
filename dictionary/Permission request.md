@@ -1,10 +1,15 @@
 ---
-description: What the harness shows the user before executing a tool call that isn't pre-approved. The mechanism for putting a human in the loop.
+description: 当工具调用超出预授权范围时，编排层向用户发起的执行确认。
 ---
-What the [harness](./Harness.md) shows the user before executing a [tool call](./Tool%20call.md) that isn't pre-approved. The [model](./Model.md) produces a tool call; instead of running it immediately, the harness pauses and asks. Approve and it runs; deny and the harness reports the denial back to the model as a [tool result](./Tool%20result.md). The mechanism by which a harness puts a human in the [loop](./Human-in-the-loop.md) for risky or sensitive actions.
 
-*Usage:*
+[权限请求](./Permission%20request.md) 是[编排层（Harness）](./Harness.md)在执行高风险或未预授权[工具调用](./Tool%20call.md)前，向用户发起的确认。
 
-"It's been blocked on a permission request for ten minutes — I was in a meeting."
+流程通常是：模型先产出工具调用，编排层暂停执行并请求审批；同意则执行，拒绝则把拒绝结果作为[工具结果](./Tool%20result.md)回传模型。
 
-"That's the cost of human-in-the-loop. Pre-approve the safe [tools](./Tool.md) so the request only fires on the actually-risky calls."
+这是把人纳入[人在回路](./Human-in-the-loop.md)的关键机制。
+
+_用法：_
+
+“为什么它总弹窗打断我？”
+
+“因为当前权限策略太保守。可把低风险只读工具预授权，仅对真正高风险操作弹请求。”

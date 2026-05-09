@@ -1,10 +1,13 @@
 ---
-description: One user message plus everything the agent does in response, up until it yields back to the user. Contains one or more provider requests.
+description: 一条用户消息及其对应的智能体完整响应过程。
 ---
-One user message plus everything the [agent](./Agent.md) does in response, up until it yields back to the user. Contains one or more [model provider requests](./Model%20provider%20request.md) — many, if the agent calls [tools](./Tool.md). A clarifying question closes the turn; your reply opens the next one. The hierarchy is [session](./Session.md) **> Turn > Model provider request**.
 
-*Usage:*
+一个[轮次](./Turn.md)是：一条用户消息，加上[智能体（Agent）](./Agent.md)从开始处理到最终回复用户的完整过程。它可能包含一个或多个[模型提供商请求](./Model%20provider%20request.md)；如果智能体调用了[工具](./Tool.md)，通常会产生多个请求。一个澄清问题结束当前轮次，你的下一条回复开启下一轮。
 
-"One turn took two minutes?"
+层级关系是：[会话](./Session.md)**> 轮次 > 模型提供商请求**。
 
-"It made fourteen [tool calls](./Tool%20call.md) inside that turn — each one is a separate model provider request. Latency stacks up before the agent finally yields back to you."
+_用法：_
+
+“为什么这一轮这么慢？”
+
+“这轮里触发了 14 次[工具调用](./Tool%20call.md)。每次工具结果回传都会引发新的模型请求，延迟会累加。”

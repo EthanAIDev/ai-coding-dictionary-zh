@@ -1,10 +1,13 @@
 ---
-description: The process that sets a model's parameters by exposing it to vast amounts of text and adjusting to improve next-token prediction.
+description: 训练是模型提供商通过海量数据调整参数的过程，目标是提升下一个 Token 预测能力。
 ---
-The process that sets a [model](./Model.md)'s [parameters](./Parameters.md), by exposing it to vast amounts of text and adjusting parameters to improve [next-token prediction](./Next-token%20prediction.md). A one-time, expensive process done by the [model provider](./Model%20provider.md). Encompasses both pre-training (the bulk run) and post-training (later refinements like instruction-following and safety); the distinction doesn't matter at this glossary's level.
 
-*Usage:*
+[训练](./Training.md) 是对[模型](./Model.md)参数进行大规模优化的过程，目标是提升[下一个 Token 预测](./Next-token%20prediction.md)能力。这个过程通常由[模型提供商](./Model%20provider.md)完成，成本高、周期长。
 
-"Can we get it to know our internal API?"
+训练常分为预训练和后训练（例如指令遵循与安全对齐）。在本词典语境里，你只需要记住：这属于模型层面的长期工程，不是日常项目迭代会做的事情。
 
-"Not via training — that's a months-long process by the model provider. Load the API docs into [context](./Context.md) instead, that's the lever you actually have."
+_用法：_
+
+“能不能让它立刻学会我们内部 API？”
+
+“靠训练不现实，那是月级别工程。对单个项目来说，更可行的是把 API 文档加载到 [上下文](./Context.md)。”

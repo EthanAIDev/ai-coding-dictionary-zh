@@ -1,10 +1,11 @@
 ---
-description: Carries no information forward. The model is stateless across requests; an agent is stateless across sessions by default.
+description: 不传递任何信息。该模型在请求之间是无状态的；默认情况下，智能体在会话之间是无状态的。
 ---
-Carries no information forward. The [model](./Model.md) is stateless across [model provider requests](./Model%20provider%20request.md) — each request resends the full [context window](./Context%20window.md), because the model has no way to see anything else. An [agent](./Agent.md) is stateless across [sessions](./Session.md) by default: a new session starts empty, with no trace of prior ones. Counterpart to [stateful](./Stateful.md).
 
-*Usage:*
+不传递任何信息。 [模型](./Model.md) 在 [模型提供商请求](./Model%20provider%20request.md) 上是无状态的 - 每个请求都会重新发送完整的 [上下文窗口](./Context%20window.md)，因为模型无法看到其他任何内容。默认情况下，[智能体（Agent）](./Agent.md) 在 [会话](./Session.md) 上是无状态的：新会话开始时为空，没有先前会话的痕迹。与 [有状态](./Stateful.md) 相对应。
 
-"Why does it forget the convention every time I [clear](./Clearing.md)?"
+_用法：_
 
-"The model's stateless — the new session starts empty. If you want it carried, write it to [AGENTS.md](./AGENTS.md.md) or a memory file the [harness](./Harness.md) loads at session start."
+“为什么每次我 [清空会话](./Clearing.md) 时它都会忘记约定？”
+
+“模型是无状态的 - 新会话开始时为空。如果您希望携带它，请将其写入 [AGENTS.md](./AGENTS.md.md) 或 [编排层（Harness）](./Harness.md) 在会话开始时加载的内存文件。”

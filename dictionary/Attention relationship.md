@@ -1,10 +1,11 @@
 ---
-description: The pairing between two tokens — meaningful pairs influence each other more than unrelated ones. A context of N tokens has ~N² of these.
+description: 两个Token之间的配对——有意义的配对比不相关的配对对彼此的影响更大。 N 个Token的上下文有 ~N² 个。
 ---
-When predicting each [token](./Token.md), the [model](./Model.md) factors in every other token in the [context](./Context.md) — some heavily, others barely at all. The pairing between two tokens is an **attention relationship**, and meaningful pairs ("her" with "Sarah", or a `getUser()` call with its `function getUser` definition) influence each other more than unrelated ones. A context of N tokens has on the order of N² relationships.
 
-*Usage:*
+在预测每个 [Token（令牌）](./Token.md) 时，[模型](./Model.md) 会考虑 [上下文](./Context.md) 中的所有其他标记 — 有些很重要，有些则几乎不考虑。两个标记之间的配对是一种**注意关系**，有意义的配对（“her”与“Sarah”，或 `getUser()` 调用及其 `function getUser` 定义）比不相关的配对对彼此的影响更大。 N 个标记的上下文具有 N² 个关系的顺序。
 
-"It keeps confusing the two `user` symbols across the diff — sounds like we're in the [dumb zone](./Smart%20zone.md)."
+_用法：_
 
-"Yeah, the attention relationship between each call site and its declaration is fighting the other one — same token shape, different bindings. Rename one and the pairings sharpen."
+“它总把 diff 里的两个 `user` 搞混，听起来像是已经掉进 [智能区](./Smart%20zone.md) 的迟钝段了。”
+
+“是的，每个调用站点及其声明之间的注意关系正在与另一个发生冲突 - 相同的Token形状，不同的绑定。重命名其中一个，配对就会变得更加清晰。”

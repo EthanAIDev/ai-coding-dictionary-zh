@@ -1,10 +1,11 @@
 ---
-description: A system that attempts to make an agent stateful across sessions by persisting to the environment and reloading at session start.
+description: 尝试通过持久保存到环境并在会话开始时重新加载来使智能体在会话之间保持有状态的系统。
 ---
-A system that attempts to make an [agent](./Agent.md) [stateful](./Stateful.md) across [sessions](./Session.md). Persists information into the [environment](./Environment.md) during a session and reloads it into the [context window](./Context%20window.md) at the start of future ones, so the agent carries continuity beyond the user [clearing](./Clearing.md) the session.
 
-*Usage:*
+尝试在 [会话](./Session.md) 上创建 [智能体（Agent）](./Agent.md) [有状态](./Stateful.md) 的系统。在会话期间将信息保留到 [环境](./Environment.md) 中，并在未来会话开始时将其重新加载到 [上下文窗口](./Context%20window.md) 中，因此智能体在用户 [清空会话](./Clearing.md) 会话之外保持连续性。
 
-"I keep having to re-tell it I'm on Postgres, not MySQL."
+_用法：_
 
-"Wire up a memory system — write what it learns to the [filesystem](./Filesystem.md) on the first [turn](./Turn.md), reload it at session start. The [model](./Model.md) itself is [stateless](./Stateless.md); the memory layer fakes continuity."
+“我一直不得不重新告诉它我使用的是 Postgres，而不是 MySQL。”
+
+“连接一个内存系统——将它学到的内容写入第一个 [轮次](./Turn.md) 上的 [文件系统](./Filesystem.md)，在会话开始时重新加载它。[模型](./Model.md) 本身是 [无状态](./Stateless.md)；内存层伪造了连续性。”

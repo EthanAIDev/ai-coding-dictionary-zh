@@ -1,18 +1,22 @@
 ---
-description: A working pattern where the user kicks off a session and leaves the agent to run unattended (away from keyboard).
+description: 一种工作模式：用户离开键盘后，由智能体在无人值守状态下持续执行任务。
 aliases:
-  - away from keyboard
-  - AFK (away from keyboard)
+  - 离开键盘
+  - AFK（Away From Keyboard）
 ---
 
-Away from keyboard. A working pattern where the user kicks off a [session](./Session.md) and leaves the [agent](./Agent.md) to run unattended. The throughput multiplier of AI coding — many AFK sessions can run in parallel while you sleep, eat, or work on something else. Usually requires a permissive [permission mode](./Permission%20mode.md) plus [sandboxing](./Sandbox.md) to be safe.
+[AFK（离开键盘）](./AFK.md) 是一种工作模式：用户发起[会话](./Session.md)后离开，由[智能体（Agent）](./Agent.md)在无人值守状态下继续工作。
 
-_Avoid:_ "background agent" — centers the machine ("running in the background") rather than the human pattern ("user has walked away"). AFK is the load-bearing fact: the user isn't watching.
+它的价值是吞吐量：你可以并行跑多个 AFK 会话，让任务在你休息、开会或处理其他事情时持续推进。
 
-_Usage:_
+为保证安全，AFK 通常要配合更明确的[权限模式](./Permission%20mode.md)与[沙箱](./Sandbox.md)。
 
-"I'm running this AFK — three sandboxed agents on the refactor, reviewing the PRs in the morning."
+*避免：*只说“后台运行智能体”。AFK 强调的是“人不在场”的协作模式，而不仅是技术执行位置。
 
-"[Bypass permissions](./Agent%20mode.md)?"
+_用法：_
 
-"Yeah, read-only [filesystem](./Filesystem.md), no network."
+“我今晚打算 AFK 跑三条重构支线，明早集中看 PR。”
+
+“权限怎么配？”
+
+“只读文件系统 + 无网络，写操作走审批。”

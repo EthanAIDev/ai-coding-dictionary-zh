@@ -8,25 +8,25 @@
   </a>
 </p>
 
-# AI Coding Dictionary
+# AI 编码词典
 
-**AI coding can feel like it's just for experts**. Unexplained jargon. Mysterious failures. Bills that don't seem to match the work.
+**AI 编程常常让人觉得只有专家才玩得转**：术语密、故障怪、账单也不透明。
 
-It isn't, really. A lot of the confusion is manufactured: **there's a whole VC-funded economy that benefits from keeping it hard to understand**.
+其实问题往往不在技术本身，而在于没有一套统一、清晰的词汇。
 
-The basic terms of engagement are learnable in an afternoon. Once you have them, the whole thing stops feeling like guesswork.
+这些基础概念，一个下午就能补齐。掌握后，很多问题都能从“靠感觉”变成“可诊断”。
 
-Why does context degrade? Why is the bill so high? Why does the same prompt behave differently from one day to the next?
+比如：为什么上下文会退化？为什么账单会突然升高？为什么同样的提示词前后表现不一致？
 
-Each has a clean answer, once someone tells you the words to use.
+当你能准确命名这些现象，排查和协作都会快很多。
 
-That's what this dictionary is for. **The vocabulary of AI coding, translated into plain English**.
+这本词典的目标就是：**把 AI 编程术语翻译成可落地的大白话中文**。
 
-**Want more than the vocabulary?** Join 62,000+ developers at **[aihero.dev/newsletter](https://www.aihero.dev/s/dictionary-newsletter)** for my latest skills, thinking on AI engineering, and the resources that'll keep you ahead of the curve.
+**不止想学词汇？**加入 **[aihero.dev/newsletter](https://www.aihero.dev/s/dictionary-newsletter)**，持续获取 AI 工程方法与实践更新。
 
 ---
 
-## Table of contents
+## 目录
 
 <!-- TOC -->
 

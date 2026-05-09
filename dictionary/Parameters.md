@@ -1,10 +1,11 @@
 ---
-description: The numbers inside a model — often billions — tuned during training. Everything the model knows lives in them. Also called weights.
+description: 模型内的数字（通常是数十亿）在训练过程中进行了调整。模型所知道的一切都存在于其中。也称为权重。
 ---
-The numbers inside a [model](./Model.md) — often billions of them — tuned during [training](./Training.md). Everything the model "knows" lives in them. Training sets them; [inference](./Inference.md) uses them unchanged. Also called *weights*.
 
-*Usage:*
+[模型](./Model.md) 内的数字（通常有数十亿）在 [训练](./Training.md) 期间进行了调整。模型“知道”的一切都存在于其中。训练可以塑造他们； [推理](./Inference.md) 不加改动地使用它们。也称为*权重*。
 
-"Can we fine-tune it on our codebase?"
+_用法：_
 
-"That'd update the parameters — different model afterwards. For one project it's almost always cheaper to load the codebase as [context](./Context.md) than to retrain."
+“我们可以在我们的代码库上对其进行微调吗？”
+
+“这会更新参数 - 之后会出现不同的模型。对于一个项目来说，将代码库加载为 [上下文](./Context.md) 几乎总是比重新训练更便宜。”

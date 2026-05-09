@@ -1,10 +1,11 @@
 ---
-description: Everything around the model that turns it into an agent: tools, system prompt, context-window management, permissions, hooks.
+description: 围绕模型将其转变为智能体的所有内容：工具、系统提示、上下文窗口管理、权限、挂钩。
 ---
-Everything around the [model](./Model.md) that turns it into an [agent](./Agent.md): [tools](./Tool.md), [system prompt](./System%20prompt.md), [context-window management](./Context%20window.md), permissions, hooks. **Claude.ai** and **Claude Code** run on the same model but behave differently because their harnesses differ.
 
-*Usage:*
+[模型](./Model.md) 周围的一切将其变成 [智能体（Agent）](./Agent.md)：[工具](./Tool.md)、[系统提示词](./System%20prompt.md)、[上下文窗口](./Context%20window.md)、权限、挂钩。**Claude.ai**和**Claude Code**在同一模型上运行，但由于它们的编排层不同而表现不同。
 
-"Same model, why is Claude Code editing files and Claude.ai just answering questions?"
+_用法：_
 
-"Different harnesses — Claude Code has [filesystem](./Filesystem.md) tools, a different system prompt, and a permission layer. The model isn't the variable here."
+“同样的模型，为什么 Claude Code 正在编辑文件，而 Claude.ai 只是回答问题？”
+
+“不同的工具 - Claude Code 有 [文件系统](./Filesystem.md) 工具、不同的系统提示符和权限层。模型不是这里的变量。”

@@ -1,10 +1,17 @@
 ---
-description: Carries information forward. Sessions are stateful across turns; agents can be made stateful across sessions via a memory system.
+description: 有状态表示信息会被向后续步骤延续。会话天然有状态；模型本身始终无状态。
 ---
-Carries information forward. A [session](./Session.md) is stateful across [turns](./Turn.md) — [context](./Context.md) accumulates as the session runs, which is why long sessions drift into the [dumb zone](./Smart%20zone.md). An [agent](./Agent.md) can be made stateful across **sessions** by adding a [memory system](./Memory%20system.md) that persists information into the [environment](./Environment.md) and reloads it at the start of future sessions. The [model](./Model.md) is never stateful; any apparent continuity is the [harness](./Harness.md) re-feeding context. Counterpart to [stateless](./Stateless.md).
 
-*Usage:*
+“有状态”表示信息会向后续过程延续。
 
-"It remembered my preferences from yesterday — does that mean the model learned them?"
+[会话](./Session.md)在[轮次](./Turn.md)之间天然是有状态的：上下文会不断累积，这也是长会话容易滑向[智能区](./Smart%20zone.md)迟钝段的原因。
 
-"No, the agent's stateful because the harness wrote them to a memory file and reloaded them at session start. The model itself saw nothing of yesterday."
+如果引入[记忆系统](./Memory%20system.md)，把信息写入[环境](./Environment.md)并在后续会话加载，[智能体（Agent）](./Agent.md)就可以跨会话表现出“有状态”。
+
+要注意：[模型](./Model.md)本身始终是无状态的；所谓连续性来自[编排层（Harness）](./Harness.md)把历史信息重新喂给它。
+
+_用法：_
+
+“它为什么在这个会话里还记得前面讨论的约束？”
+
+“因为会话是有状态的；消息和工具结果都在持续累积。”

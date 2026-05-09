@@ -1,10 +1,11 @@
 ---
-description: Ending the current session and starting a fresh one. The next message begins with an empty session and an empty context window.
+description: 结束当前会话并开始新的会话。下一条消息以空会话和空上下文窗口开始。
 ---
-Ending the current [session](./Session.md) and starting a fresh one. The next message begins with an empty session and an empty [context window](./Context%20window.md). Usually user-driven.
 
-*Usage:*
+结束当前的 [会话](./Session.md) 并开始新的。下一条消息以空会话和空 [上下文窗口](./Context%20window.md) 开头。通常是用户驱动的。
 
-"It's stuck looping on the failing test."
+_用法：_
 
-"Just clear it — start a fresh session with the plan doc and the test file. No point fighting the existing [context](./Context.md)."
+“它在失败的测试中陷入循环。”
+
+“只需清除它即可 - 使用计划文档和测试文件开始新的会话。没有必要与现有的 [上下文](./Context.md) 进行斗争。”

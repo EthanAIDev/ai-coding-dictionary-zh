@@ -1,10 +1,11 @@
 ---
-description: Transferring agent context from one session to another, with no return path. Carry mechanism varies — artifact, compaction, others.
+description: 将智能体上下文从一个会话传输到另一个会话，没有返回路径。携带机制各不相同——工件、压缩等。
 ---
-Transferring [agent](./Agent.md) [context](./Context.md) from one [session](./Session.md) to another, with no return path. The carry mechanism varies — a written [handoff artifact](./Handoff%20artifact.md), an in-memory summary ([compaction](./Compaction.md)), and others. Distinct from [clearing](./Clearing.md) (no transfer at all). Reasons vary: switching roles (planner → implementer), kicking off an [AFK](./AFK.md) run, fanning out to parallel sessions, or freeing up [context window](./Context%20window.md) room.
 
-*Usage:*
+将 [智能体（Agent）](./Agent.md) [上下文](./Context.md) 从一个 [会话](./Session.md) 传输到另一个 [会话](./Session.md)，没有返回路径。承接机制各不相同——写入的 [交接文档](./Handoff%20artifact.md)、内存中的摘要 ([压缩总结](./Compaction.md)) 等等。与 [清空会话](./Clearing.md) 不同（根本不传输）。原因各不相同：转换角色（计划者 → 实施者）、启动 [AFK（离开键盘）](./AFK.md) 运行、拆分到并行会话或释放 [上下文窗口](./Context%20window.md) 空间。
 
-"Planning session is getting heavy — should I just keep going?"
+_用法：_
 
-"Do a handoff. Write the decisions to a doc, clear, start the implementation in a fresh session reading from it."
+“规划会话变得越来越沉重——我应该继续吗？”
+
+“进行交接。将决策写入文档，明确，在新的会话中读取它并开始实施。”

@@ -1,10 +1,11 @@
 ---
-description: A handoff done in-memory: the previous session's history is summarised and seeds a fresh session. Lossy — detail traded for headroom.
+description: 在内存中完成切换：总结前一个会话的历史并为新的会话播种。有损——以细节换取余量。
 ---
-A [handoff](./Handoff.md) done in-memory: the previous [session](./Session.md)'s history is summarised and seeds a fresh session. Lossy — detail traded for headroom. Triggered manually by the user, or [automatically](./Autocompact.md).
 
-*Usage:*
+在内存中完成的 [交接](./Handoff.md)：总结了前一个 [会话](./Session.md) 的历史并为新的会话播种。有损——以细节换取余量。由用户手动触发，或 [自动压缩](./Autocompact.md)。
 
-"[Context](./Context.md)'s getting heavy and I still have the test pass to do."
+_用法：_
 
-"Compact before you start — write what's load-bearing into the summary prompt so the new session keeps the schema decisions and drops the exploration."
+“[上下文](./Context.md) 越来越重，但我仍然需要通过测试。”
+
+“开始之前进行压缩 - 将承载内容写入摘要提示中，以便新会话保留模式决策并放弃探索。”

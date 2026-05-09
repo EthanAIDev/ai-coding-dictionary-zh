@@ -1,10 +1,13 @@
 ---
-description: A handoff artifact describing a multi-session piece of work — what's being built, not how each session does its share. Made of tickets.
+description: 规格文档：定义“要构建什么”，用于跨多个会话持续推进，并拆分为任务单执行。
 ---
-A [handoff artifact](./Handoff%20artifact.md) describing a multi-[session](./Session.md) piece of work — what's being built, not how each session does its share. Mutates as work progresses. Made of [tickets](./Ticket.md).
 
-*Usage:*
+[规格文档（Spec）](./Spec.md) 是一种[交接文档](./Handoff%20artifact.md)：它描述跨多个[会话](./Session.md)的目标与边界，重点是“做什么”，而不是每个会话“怎么做”。
 
-"Should this all be one session?"
+Spec 会随着推进持续更新，并进一步拆为多个[任务单（Ticket）](./Ticket.md)分别执行。
 
-"No, write it up as a spec — break it into tickets, run each one in its own session. Trying to do the whole thing in a single [context](./Context.md) will hit the [dumb zone](./Smart%20zone.md) before you're halfway."
+_用法：_
+
+“这个需求要不要直接在一个会话里做完？”
+
+“不要硬塞。先写 Spec，再拆任务单分会话推进；否则很容易在中途掉进 [智能区](./Smart%20zone.md) 的迟钝段。”

@@ -1,10 +1,11 @@
 ---
-description: The parameters. Stateless — does next-token prediction and nothing else. Cannot do anything agentic on its own.
+description: 参数。无状态，只做下一个 Token 预测。模型本身不能直接当作智能体使用。
 ---
-The [parameters](./Parameters.md). [Stateless](./Stateless.md) — does [next-token prediction](./Next-token%20prediction.md) and nothing else. "Claude Opus 4.7" and "GPT-5" are models. On its own a model can't do anything agentic; it has to be [harnessed](./Harness.md).
 
-*Usage:*
+[参数](./Parameters.md)。[无状态](./Stateless.md)：只执行[下一个 Token 预测](./Next-token%20prediction.md)。`Claude Opus 4.7` 和 `GPT-5` 都是模型。模型本身不能执行“智能体级”的动作，它必须被[编排层（Harness）](./Harness.md)包裹起来。
 
-"Should we switch the model from Sonnet to Opus for the planning step?"
+_用法：_
 
-"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the [system prompt](./System%20prompt.md) and [tools](./Tool.md) are wrong."
+“我们在规划阶段要不要把模型从 Sonnet 换成 Opus？”
+
+“可以试，但这个任务的大头通常由编排层决定。如果[系统提示词](./System%20prompt.md)和[工具](./Tool.md)配置不对，换模型也救不了。”

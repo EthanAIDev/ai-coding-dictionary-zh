@@ -1,14 +1,15 @@
 ---
-description: Facts the agent can read directly from the context right now. Counterpart to parametric knowledge.
+description: 智能体现在可以直接从上下文中读取事实。与参数化知识相对应。
 ---
-Facts the [agent](./Agent.md) can read directly from the [context](./Context.md) right now — the user's task, files the agent has read in, [tool results](./Tool%20result.md), [AGENTS.md](./AGENTS.md.md) content loaded at [session](./Session.md) start. Counterpart to [parametric knowledge](./Parametric%20knowledge.md): parametric is *recalled* from the parameters; contextual is *read* from the [window](./Context%20window.md). [Hallucinations](./Hallucination.md) are much less common when the agent works from contextual knowledge — the answer is right in front of it, not dredged up from a blurred memory.
 
-*Reach for this term* only when contrasting with parametric knowledge; otherwise just say **context**.
+[智能体（Agent）](./Agent.md) 现在可以直接从 [上下文](./Context.md) 读取事实 — 用户的任务、智能体已读入的文件、在 [会话](./Session.md) 启动时加载的 [工具结果](./Tool%20result.md)、[AGENTS.md](./AGENTS.md.md) 内容。与 [参数知识](./Parametric%20knowledge.md) 相对应：参数是从参数中“调用”的；上下文是从 [上下文窗口](./Context%20window.md) *读取*的。当智能体根据上下文知识工作时，[幻觉](./Hallucination.md) 就不太常见了——答案就在它的前面，而不是从模糊的记忆中挖掘出来。
 
-*Avoid:* "working memory" — contextual knowledge is what's in the window *now*; a [memory system](./Memory%20system.md) is what gets cross-session content into it. Different scales, don't conflate.
+_仅在与参数知识对比时才使用该术语_；否则就只说**上下文**。
 
-*Usage:*
+_避免：_“工作记忆”——上下文知识是*现在*窗口中的内容； [记忆系统](./Memory%20system.md) 是将跨会话内容放入其中的。不同的尺度，不要混为一谈。
 
-"Why does it nail the API when I paste the docs and fabricate it when I don't?"
+_用法：_
 
-"With the docs in, it's contextual knowledge — reading off the page. Without, it's parametric and the rare endpoints blur."
+“为什么当我粘贴文档时它会钉住API，而我不粘贴文档时它会捏造它？”
+
+“有了文档，它就是上下文知识——从页面上阅读。如果没有文档，它就是参数化的，罕见的端点会变得模糊。”

@@ -1,10 +1,11 @@
 ---
-description: A handoff artifact scoping one session of work. Stands alone or hangs off a spec. Can block or be blocked by sibling tickets.
+description: 范围在一个工作会话范围内的移交工件。独立存在或依附于某个规范。可以阻止或被同级票证阻止。
 ---
-A [handoff artifact](./Handoff%20artifact.md) scoping one [session](./Session.md) of work. Stands alone, or hangs off a [spec](./Spec.md) as one of its children. Tickets can block or be blocked by sibling tickets, so the order of work falls out of their dependency graph rather than a linear plan.
 
-*Usage:*
+一项 [交接文档](./Handoff%20artifact.md) 范围的工作 [会话](./Session.md)。独立存在，或者作为 [规格文档（Spec）](./Spec.md) 的子级之一挂在 [规格文档（Spec）](./Spec.md) 上。票证可以阻止或被同级票证阻止，因此工作顺序不符合其依赖关系图，而不是线性计划。
 
-"Where do I start on the migration spec?"
+_用法：_
 
-"Look at the ticket graph — the schema change blocks the backfill, the backfill blocks the API switch. Pick a leaf and run a session on it."
+“我从哪里开始了解迁移规范？”
+
+“查看票证图 — 架构更改会阻止回填，回填会阻止 API 切换。选择一片叶子并在其上运行会话。”

@@ -1,13 +1,14 @@
 ---
-description: A working pattern where one or more humans pair with the agent during a session — reviewing, redirecting, or collaborating in real time.
-aliases:
-  - HITL
-  - Human-in-the-loop (HITL)
+description: 一种工作模式，其中一个或多个人员在会话期间与智能体配对 - 实时审查、重定向或协作。
+别名：
+- HITL
+- 人在环（HITL）
 ---
-A working pattern where one or more humans pair with the [agent](./Agent.md) during a [session](./Session.md) — reviewing, redirecting, or collaborating in real time. The human is present and engaged, not just gating individual actions.
 
-*Usage:*
+一种工作模式，其中一个或多个人在 [会话](./Session.md) 期间与 [智能体（Agent）](./Agent.md) 配对 — 实时审查、重定向或协作。人类在场并参与其中，而不仅仅是限制个人行为。
 
-"Run this [AFK](./AFK.md) overnight?"
+_用法：_
 
-"No, schema migration — keep it human-in-the-loop. I want to see each step and steer if it picks the wrong column to backfill from."
+“过夜运行这个[AFK（离开键盘）](./AFK.md)？”
+
+“不，模式迁移 - 让它保持人性化。我想查看每一步，并指导它是否选择了错误的列进行回填。”

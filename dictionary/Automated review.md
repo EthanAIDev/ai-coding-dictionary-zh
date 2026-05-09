@@ -1,12 +1,17 @@
 ---
-description: An agent reviewing another agent's work, often with a different model or system prompt. Non-deterministic: it forms a judgement.
+description: 用一个智能体评审另一个智能体的产出。它是“判断型”流程，不是确定性的检查。
 ---
-An [agent](./Agent.md) reviewing another agent's work, often with a different [model](./Model.md) or [system prompt](./System%20prompt.md). Non-deterministic: it forms a judgement. Runs anywhere — pre-merge on a PR, post-hoc on commit history, mid-session as a [subagent](./Subagent.md). An LLM-as-judge in CI is automated review, not an [automated check](./Automated%20check.md); what the assertion *does* decides the category, not where it runs.
 
-*Avoid:* "AI review" / "agent review" — too vague to distinguish from the working agent itself.
+[自动评审](./Automated%20review.md) 是指：一个[智能体（Agent）](./Agent.md)去评审另一个智能体的工作，通常会用不同的[模型](./Model.md)或不同的[系统提示词](./System%20prompt.md)。
 
-*Usage:*
+它本质上是非确定性的判断过程，和[自动检查](./Automated%20check.md)不同：自动检查关注“是否满足明确规则”，自动评审关注“质量是否达标、风险是否可接受”。
 
-"We're getting too many bad PRs from the [AFK](./AFK.md) runs."
+可放在不同位置运行：PR 合并前、提交后巡检，或会话中以[子智能体](./Subagent.md)执行。
 
-"Add an automated review step before merge — different model, separate system prompt, scoped to security and contract changes."
+*避免：*笼统说“AI review”。请明确是自动检查还是自动评审。
+
+_用法：_
+
+“AFK 跑出来的 PR 质量波动太大。”
+
+“在合并前加一层自动评审：独立模型、独立系统提示词，重点看安全与契约变更。”

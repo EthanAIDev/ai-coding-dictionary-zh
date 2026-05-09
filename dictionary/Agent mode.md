@@ -1,21 +1,22 @@
 ---
-description: A preset bundling a permission mode with behavioral instructions injected into the system prompt. Can flip mid-session.
-aliases:
-  - plan mode
-  - accept-edits
-  - bypass permissions
-  - YOLO mode
+description: 智能体模式：把权限设置与行为指令打包成可切换的运行预设。
 ---
-A preset that shapes how the [agent](./Agent.md) operates at runtime — bundles a [permission mode](./Permission%20mode.md) with behavioral instructions injected into the [system prompt](./System%20prompt.md). Examples: a default that prompts on risky calls, a **plan mode** that blocks edits and steers the agent toward research, an **accept-edits** mode that auto-approves edits, a **bypass permissions** mode (colloquially **YOLO mode**) that auto-approves everything. Can flip [mid-session](./Session.md).
 
-*Vendor terms:* Claude Code calls these "permission modes," Codex calls them "approval modes" — both predate behavioral bundling.
+[智能体模式](./Agent%20mode.md) 是运行预设：把[权限模式](./Permission%20mode.md)与注入[系统提示词](./System%20prompt.md)的行为规则一起打包。
 
-*Usage:*
+典型模式包括：
 
-"It keeps editing files when I just want a plan."
+- 需要审批高风险操作
+- 只允许研究不允许编辑（计划模式）
+- 自动接受编辑
+- 全自动放行（常被称为 YOLO 模式）
 
-"Switch to plan mode — it'll block writes and stay in research."
+模式可在[会话](./Session.md)中途切换。
 
-"What about for the [AFK](./AFK.md) run later?"
+*供应商术语：*Claude Code 常把它归到“Permission Mode”，Codex 常说“Approval Mode”；本质上都在描述权限与行为控制的组合。
 
-"Bypass mode, but only inside the [sandbox](./Sandbox.md)."
+_用法：_
+
+“这轮我们要怎么跑？”
+
+“先计划模式做方案，确认后切自动接受编辑；AFK 前再收紧到沙箱内可放行。”

@@ -1,10 +1,13 @@
 ---
-description: One bounded run of interaction with an agent. Starts empty, accumulates, ends when cleared, closed, or compacted into a fresh session.
+description: 与智能体的一段有边界交互：从空上下文开始，逐步累积，最终清空、关闭或压缩结束。
 ---
-One bounded run of interaction with an [agent](./Agent.md). Starts empty, accumulates messages, [tool results](./Tool%20result.md), and files read, and ends when [cleared](./Clearing.md), closed, or [compacted](./Compaction.md) into a fresh session. The session is what *fills* the [context window](./Context%20window.md): if the context window is the box, the session is the stuff slowly filling it up. Work too large for a single context window must be split across sessions.
 
-*Usage:*
+[会话](./Session.md) 是你与[智能体（Agent）](./Agent.md)的一段完整协作过程。它从空状态开始，逐步累积消息、[工具结果](./Tool%20result.md)和读取过的内容；在[清空会话](./Clearing.md)、关闭，或[压缩总结](./Compaction.md)后结束并进入新会话。
 
-"How long can one session run before it falls apart?"
+如果把[上下文窗口](./Context%20window.md)比作盒子，会话就是不断往里装内容的过程。工作量超出单个上下文窗口时，就应该拆成多会话推进。
 
-"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, [hand off](./Handoff.md) or compact, don't push through."
+_用法：_
+
+“一个会话一般能跑多久才该换？”
+
+“看任务类型。定向重构通常比开放探索更耐久；当会话明显膨胀，就该交接或压缩，不要硬推。”

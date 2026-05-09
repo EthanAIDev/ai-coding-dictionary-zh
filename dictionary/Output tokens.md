@@ -1,10 +1,11 @@
 ---
-description: Tokens the model generates back. Billed at a higher rate than input tokens, since they cost more compute to produce.
+description: 模型生成回来的Token。计费费率高于输入Token，因为生产它们需要更多的计算成本。
 ---
-[Tokens](./Token.md) the [model](./Model.md) generates back. Billed at a higher rate than [input tokens](./Input%20tokens.md), since they cost more compute to produce.
 
-*Usage:*
+[Token（令牌）](./Token.md) [模型](./Model.md) 生成回来。计费费率高于 [输入 Token](./Input%20tokens.md)，因为它们的生产成本更高。
 
-"The refactor [session](./Session.md) is burning through credit even though the inputs are small."
+_用法：_
 
-"[Agent](./Agent.md)'s rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."
+“尽管投入很小，但重构 [会话](./Session.md) 正在消耗信用。”
+
+“[智能体（Agent）](./Agent.md) 重写整个文件而不是修补。输出Token的成本大约是输入速率的五倍——让它发出编辑，账单就会下降。”

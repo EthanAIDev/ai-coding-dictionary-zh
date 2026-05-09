@@ -1,10 +1,14 @@
 ---
-description: One round-trip from the harness to the model provider. The harness sends context; the provider returns one response.
+description: 一次从编排层到模型提供商的请求-响应往返。
 ---
-One round-trip from the [harness](./Harness.md) to the [model provider](./Model%20provider.md). The harness sends the current [context](./Context.md); the provider returns one response (a [tool call](./Tool%20call.md) or a final answer). A single user message can spawn many model provider requests if the [agent](./Agent.md) calls [tools](./Tool.md) — each [tool result](./Tool%20result.md) triggers another request.
 
-*Usage:*
+[模型提供商请求](./Model%20provider%20request.md) 是一次完整往返：
+编排层把当前[上下文](./Context.md)发给[模型提供商](./Model%20provider.md)，提供商返回模型输出（可能是最终回答，也可能是[工具调用](./Tool%20call.md)）。
 
-"One question burned forty thousand [tokens](./Token.md)?"
+如果[智能体（Agent）](./Agent.md)在一个用户问题里多次调用[工具](./Tool.md)，每次[工具结果](./Tool%20result.md)回传后都可能触发新一轮模型提供商请求，所以一次对话轮次里可能有很多次请求。
 
-"Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole [session](./Session.md) prefix re-sends every time."
+_用法：_
+
+“为什么一个问题就用了四万 Token？”
+
+“看工具链路：12 次 grep、8 次读取、4 次编辑。每次工具结果都会触发新请求，而且会重发会话前缀。”

@@ -1,10 +1,11 @@
 ---
-description: Running a trained model to generate output — what happens on every model provider request. Parameters stay fixed.
+description: 运行经过训练的模型来生成输出——每个模型提供商请求时会发生什么。参数保持固定。
 ---
-Running a trained [model](./Model.md) to generate output — what happens on every [model provider request](./Model%20provider%20request.md). [Parameters](./Parameters.md) stay fixed; the model just does [next-token prediction](./Next-token%20prediction.md) over the [context](./Context.md) it's given. Cheap relative to [training](./Training.md), but billed per [token](./Token.md) and the dominant cost of using a model.
 
-*Usage:*
+运行经过训练的 [模型](./Model.md) 来生成输出 - 每个 [模型提供商请求](./Model%20provider%20request.md) 上会发生什么。 [参数](./Parameters.md) 保持固定；该模型只是在给定的 [上下文](./Context.md) 上执行 [下一个 Token 预测](./Next-token%20prediction.md) 。相对 [训练](./Training.md) 便宜，但按 [Token（令牌）](./Token.md) 和使用模型的主要成本计费。
 
-"Why does the bill scale with usage instead of being a flat license?"
+_用法：_
 
-"You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single [turn](./Turn.md) can expand into many requests when [tools](./Tool.md) are called."
+“为什么账单会随着使用情况而变化，而不是统一许可证？”
+
+“你要为推理付费——每个模型提供商请求都在提供者的硬件上运行模型。训练已经进行，但每个请求都会产生推理成本，并且当调用 [工具](./Tool.md) 时，单个 [轮次](./Turn.md) 可以扩展到许多请求。”

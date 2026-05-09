@@ -1,14 +1,19 @@
 ---
-description: Early in a session the agent is sharp and focused. As the session grows it drifts into a dumb zone: sloppier, forgetful, more mistakes.
+description: 会话早期通常更聪明、更聚焦；会话拉长后会进入“迟钝区”，错误率上升。
 aliases:
-  - Dumb zone
+  - 智能区
+  - 迟钝区
   - Smart zone / Dumb zone
 ---
 
-Early in a [session](./Session.md) the [agent](./Agent.md) is in a "smart zone" — sharp, focused, recall is good. As the session grows it drifts into a "dumb zone": sloppier, forgetful, more mistakes — and more \*\*faithfulness [hallucinations](./Hallucination.md). Same [model](./Model.md), same [harness](./Harness.md) — just more [context](./Context.md). The felt effect of [attention degradation](./Attention%20degradation.md). On frontier models, the dumb zone commonly begins around 100,000 tokens - though this is debated. [Clear](./Clearing.md) or [compact](./Compaction.md) when the session bloats; don't push through.
+在 [会话](./Session.md) 早期，[智能体（Agent）](./Agent.md) 常处于“智能区”：理解快、注意力集中、关键约束抓得住。随着会话拉长，容易进入“迟钝区”：更容易漏条件、忘上下文、犯低级错，且更常出现忠实性[幻觉](./Hallucination.md)。
 
-_Usage:_
+底层机制通常与[注意力退化](./Attention%20degradation.md)有关：同一个 [模型](./Model.md)、同一个 [编排层（Harness）](./Harness.md)，只是 [上下文](./Context.md) 越来越重。
 
-"It nailed the first three components and just butchered the fourth."
+实务上，一旦你明显感到“越做越飘”，优先 [清空会话](./Clearing.md) 或 [压缩总结](./Compaction.md)，别硬扛。
 
-"You're out of the smart zone — same model, just deep into the dumb zone now. Compact and reload the plan, the next component will land."
+_用法：_
+
+“前三个模块都很准，第四个开始乱了。”
+
+“已经离开智能区了。压缩后重载计划，再继续下一块。”

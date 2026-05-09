@@ -1,10 +1,11 @@
 ---
-description: The relevant information the agent has access to right now — what the agent knows that's pertinent to the task.
+description: 智能体现在可以访问的相关信息 - 智能体知道与任务相关的信息。
 ---
-The relevant information the [agent](./Agent.md) has access to right now. The abstract noun — not the raw input the model sees (that's the [context window](./Context%20window.md)), not the running history (that's the [session](./Session.md)), but *what the agent knows that's pertinent to the task*. "Loading something into context" means making it part of this set; "context engineering" is the discipline of curating it.
 
-*Usage:*
+[智能体（Agent）](./Agent.md) 目前可以访问的相关信息。抽象名词 - 不是模型看到的原始输入（即 [上下文窗口](./Context%20window.md)），也不是运行历史记录（即 [会话](./Session.md)），而是*智能体知道与任务相关的内容*。 “将某些内容加载到上下文中”意味着使其成为该集合的一部分； “情境工程”是策划它的学科。
 
-"It keeps inventing fields that aren't in the type."
+_用法：_
 
-"The type file isn't in context — it's reading the call sites and guessing. Read the definition in first."
+“它不断地发明不属于该类型的领域。”
+
+“类型文件不在上下文中 - 它正在读取调用站点并猜测。首先阅读定义。”

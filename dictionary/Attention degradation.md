@@ -1,10 +1,13 @@
 ---
-description: As a session grows, each token's attention budget spreads across more competitors; signal on meaningful relationships shrinks.
+description: 注意力退化：随着会话增长，关键信号被稀释，噪声占比上升，导致质量下滑。
 ---
-As a [session](./Session.md) grows, each [token](./Token.md)'s [attention budget](./Attention%20budget.md) is spread across more competitors. The signal on any one [meaningful relationship](./Attention%20relationship.md) shrinks; noise from irrelevant [context](./Context.md) crowds in. Same [model](./Model.md), same [parameters](./Parameters.md) — just more mouths to feed from the same plate. Cause of the smart zone / dumb [zone effect](./Smart%20zone.md).
 
-*Usage:*
+随着[会话](./Session.md)增长，每个 [Token（令牌）](./Token.md) 的[注意力预算](./Attention%20budget.md)要分配给更多对象。结果是：关键关系信号变弱，不相关内容噪声变强。
 
-"It's deep in the dumb zone — inventing generics that aren't in the type file."
+同一个[模型](./Model.md)、同一个[参数](./Parameters.md)，在更长上下文里也可能表现更差。这正是从“智能区”滑向“迟钝区”的常见机制。
 
-"Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. [Clear](./Clearing.md) and reload."
+_用法：_
+
+“类型定义明明还在上下文里，它为什么还是看漏？”
+
+“这是注意力退化。信息‘在’不等于信息‘被有效关注’。先清空或压缩再继续。”

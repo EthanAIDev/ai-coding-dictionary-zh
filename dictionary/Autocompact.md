@@ -1,10 +1,11 @@
 ---
-description: Compaction triggered automatically by the harness when the context window approaches full.
+description: 当上下文窗口接近满时，由编排层自动触发压缩。
 ---
-[Compaction](./Compaction.md) triggered automatically by the [harness](./Harness.md) when the [context window](./Context%20window.md) approaches full.
 
-*Usage:*
+当 [上下文窗口](./Context%20window.md) 接近满时，[压缩总结](./Compaction.md) 由 [编排层（Harness）](./Harness.md) 自动触发。
 
-"It doesn't seem to remember what we decided about the schema earlier."
+_用法：_
 
-"Autocompact fired between [turns](./Turn.md) — the early decisions got summarised and we must have lost something. Reload the plan doc, or compact manually next time so you control what gets kept."
+“它似乎不记得我们之前对架构做出的决定。”
+
+“Autocompact 在 [轮次](./Turn.md) 之间触发 - 早期决策已得到总结，我们一定丢失了一些东西。重新加载计划文档，或下次手动压缩，以便您控制保留的内容。”

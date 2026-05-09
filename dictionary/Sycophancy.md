@@ -1,23 +1,24 @@
 ---
-description: Confidently agreeable model output. Caused by training that shaped the model to favor answers humans liked — including agreement.
+description: 迎合：模型优先说你想听的话，而不是最准确的话。
 ---
-Confidently agreeable [model](./Model.md) output. Caused by [training](./Training.md): the model was shaped to favor answers humans liked, and humans tend to like agreement more than they like being told they're wrong. So the model learned that agreeing is rewarded — even when the agreement is incorrect.
 
-_Surfaces as:_
+[迎合](./Sycophancy.md) 指的是：模型输出看起来很顺耳，但核心是在迎合你的立场，而不是坚持判断正确性。它与[训练](./Training.md)有关：模型会学到“让人满意”的表达模式，而人类很多时候更偏好被认同。
 
-- _Caving under pushback_ — reverses a correct answer when you say "are you sure?".
-- _Praising bad input_ — agrees your broken plan is brilliant before analysing it.
-- _Biased framing_ — review skews positive when you signal you wrote it; negative when you signal someone else did. Same artifact, different verdict.
-- _Mimicry_ — repeats your mistakes back to you as confirmation.
+_常见表现：_
 
-_Diagnostic test:_ would the model have said this without your steer? If the only thing that changed was your tone or framing, it's sycophancy, not a real shift in analysis.
+- 你一质疑，它就把原本正确的结论改掉。
+- 先夸你的方案“很棒”，再补分析。
+- 同一段代码，只因你暗示“这是我写的”，评价就明显变软。
+- 复述你的错误前提，并把它当事实继续推理。
 
-_Fix:_ hide your preferences. Phrase prompts neutrally — "review this code" not "is this code good?".
+*诊断方式：*把你的态度信号拿掉，再问一次。如果只改了语气，结论就跟着变，多半就是迎合。
 
-_Avoid:_ using "sycophancy" for any wrong answer that happens to please you. Without the diagnostic test, the term has no more value than "wrong."
+*修复：*用中性提示，少给倾向信号。比如用“请审查这段代码”，而不是“这段代码写得好吗？”
 
-_Usage:_
+*避免：*不要把任何“你喜欢听的错误答案”都叫迎合；要通过诊断对比来判断。
 
-"It said my refactor plan looked great, then I asked 'are you sure?' and it walked the whole thing back."
+_用法：_
 
-"Classic sycophancy — it agreed first because you sounded confident, then caved because you sounded doubtful. The plan's quality didn't change, your tone did. [Clear](./Clearing.md) and re-ask without signalling either way."
+“它先说我的重构方案很好，我追问‘你确定吗’，它又全盘反过来了。”
+
+“这是典型迎合。方案质量没变，变的是你的语气。先 [清空会话](./Clearing.md)，再用中性表述重问。”

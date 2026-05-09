@@ -1,10 +1,13 @@
 ---
-description: Input tokens the provider has cached from a previous request via its prefix cache, billed at a much lower rate.
+description: 缓存 Token：已被模型提供商前缀缓存命中的输入 Token，通常按更低价格计费。
 ---
-[Input tokens](./Input%20tokens.md) the [provider](./Model%20provider.md) has cached from a previous [model provider request](./Model%20provider%20request.md) so it doesn't have to re-process them. When consecutive requests share a prefix, the provider reuses the work via its [prefix cache](./Prefix%20cache.md) and bills the cached portion at a much lower rate. The lever that makes long [sessions](./Session.md) affordable — without it, every [turn](./Turn.md) re-pays for the whole history.
 
-*Usage:*
+[缓存 Token](./Cache%20tokens.md) 是指已被[模型提供商](./Model%20provider.md)缓存并复用的[输入 Token](./Input%20tokens.md)。命中缓存后，这部分通常按更低费率计费。
 
-"Cost on long sessions is brutal — eight bucks for a refactor."
+对长[会话](./Session.md)来说，这往往是控制成本的关键；没有缓存命中时，每个[轮次](./Turn.md)都可能为历史前缀反复付费。
 
-"Check the cache tokens. If the [harness](./Harness.md) is reordering the [system prompt](./System%20prompt.md) or files between turns, the prefix breaks and you re-pay full input rate every request."
+_用法：_
+
+“感觉这轮输出不多，为什么还是贵？”
+
+“看缓存命中。如果前缀被改动打断了，输入 Token 成本会明显上升。”

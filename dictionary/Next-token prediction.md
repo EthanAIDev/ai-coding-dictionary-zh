@@ -1,10 +1,11 @@
 ---
-description: What the model actually does. Samples one next token from the context, appends it, and runs again. Its only mode of operation.
+description: 模型实际上做了什么。从上下文中采样下一个标记，将其附加，然后再次运行。它唯一的操作模式。
 ---
-What the [model](./Model.md) actually does. Given a [context](./Context.md), it samples one next [token](./Token.md), appends it, and runs again. Every output — a sentence, a [tool call](./Tool%20call.md), a thousand-line file — is built one token at a time. The model has no other mode of operation.
 
-*Usage:*
+[模型](./Model.md) 实际上做了什么。给定一个 [上下文](./Context.md)，它会对下一个 [Token（令牌）](./Token.md) 进行采样，追加它，然后再次运行。每个输出（一个句子、一个 [工具调用](./Tool%20call.md)、一千行文件）一次构建一个标记。该模型没有其他操作模式。
 
-"How does the [agent](./Agent.md) 'decide' to call a tool?"
+_用法：_
 
-"It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the [harness](./Harness.md) parses out of the output stream."
+“[智能体（Agent）](./Agent.md) 如何‘决定’调用工具？”
+
+“它不是——它是一直向下的下一个标记预测。工具调用只是 [编排层（Harness）](./Harness.md) 从输出流中解析出的结构化字符串。”

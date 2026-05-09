@@ -14,835 +14,886 @@
   </a>
 </p>
 
-# AI Coding Dictionary
+# AI 编码词典
 
-**AI coding can feel like it's just for experts**. Unexplained jargon. Mysterious failures. Bills that don't seem to match the work.
+**AI 编程常常让人觉得只有专家才玩得转**：术语密、故障怪、账单也不透明。
 
-It isn't, really. A lot of the confusion is manufactured: **there's a whole VC-funded economy that benefits from keeping it hard to understand**.
+其实问题往往不在技术本身，而在于没有一套统一、清晰的词汇。
 
-The basic terms of engagement are learnable in an afternoon. Once you have them, the whole thing stops feeling like guesswork.
+这些基础概念，一个下午就能补齐。掌握后，很多问题都能从“靠感觉”变成“可诊断”。
 
-Why does context degrade? Why is the bill so high? Why does the same prompt behave differently from one day to the next?
+比如：为什么上下文会退化？为什么账单会突然升高？为什么同样的提示词前后表现不一致？
 
-Each has a clean answer, once someone tells you the words to use.
+当你能准确命名这些现象，排查和协作都会快很多。
 
-That's what this dictionary is for. **The vocabulary of AI coding, translated into plain English**.
+这本词典的目标就是：**把 AI 编程术语翻译成可落地的大白话中文**。
 
-**Want more than the vocabulary?** Join 62,000+ developers at **[aihero.dev/newsletter](https://www.aihero.dev/s/dictionary-newsletter)** for my latest skills, thinking on AI engineering, and the resources that'll keep you ahead of the curve.
+**不止想学词汇？**加入 **[aihero.dev/newsletter](https://www.aihero.dev/s/dictionary-newsletter)**，持续获取 AI 工程方法与实践更新。
 
 ---
 
-## Table of contents
+## 目录
 
 <details>
-<summary>Section 1 — The Model</summary>
+<summary>Section 1 — 模型</summary>
 
-- [Model](#model)
-- [Parameters](#parameters)
-- [Training](#training)
-- [Inference](#inference)
-- [Token](#token)
-- [Next-token prediction](#next-token-prediction)
-- [Non-determinism](#non-determinism)
-- [Model provider](#model-provider)
-- [Harness](#harness)
-- [Model provider request](#model-provider-request)
-- [Input tokens](#input-tokens)
-- [Output tokens](#output-tokens)
-- [Prefix cache](#prefix-cache)
-- [Cache tokens](#cache-tokens)
+- [模型](#模型)
+- [参数](#参数)
+- [训练](#训练)
+- [推理](#推理)
+- [Token（令牌）](#token令牌)
+- [下一个 Token 预测](#下一个-token-预测)
+- [非确定性](#非确定性)
+- [模型提供商](#模型提供商)
+- [编排层（Harness）](#编排层harness)
+- [模型提供商请求](#模型提供商请求)
+- [输入 Token](#输入-token)
+- [输出 Token](#输出-token)
+- [前缀缓存](#前缀缓存)
+- [缓存 Token](#缓存-token)
 
 </details>
 
 <details>
-<summary>Section 2 — Sessions, Context Windows & Turns</summary>
+<summary>Section 2 — 会话、上下文窗口与轮次</summary>
 
-- [Stateless](#stateless)
-- [Context](#context)
-- [Context window](#context-window)
-- [Stateful](#stateful)
-- [Agent](#agent)
-- [System prompt](#system-prompt)
-- [Session](#session)
-- [Turn](#turn)
+- [无状态](#无状态)
+- [上下文](#上下文)
+- [上下文窗口](#上下文窗口)
+- [有状态](#有状态)
+- [智能体（Agent）](#智能体agent)
+- [系统提示词](#系统提示词)
+- [会话](#会话)
+- [轮次](#轮次)
 
 </details>
 
 <details>
-<summary>Section 3 — Tools & Environment</summary>
+<summary>Section 3 — 工具与环境</summary>
 
-- [Environment](#environment)
-- [Filesystem](#filesystem)
-- [Tool](#tool)
-- [Tool call](#tool-call)
-- [Tool result](#tool-result)
+- [环境](#环境)
+- [文件系统](#文件系统)
+- [工具](#工具)
+- [工具调用](#工具调用)
+- [工具结果](#工具结果)
 - [MCP](#mcp)
-- [Permission request](#permission-request)
-- [Permission mode](#permission-mode)
-- [Agent mode](#agent-mode)
-- [Sandbox](#sandbox)
+- [权限请求](#权限请求)
+- [权限模式](#权限模式)
+- [智能体模式](#智能体模式)
+- [沙箱](#沙箱)
 
 </details>
 
 <details>
-<summary>Section 4 — Failure Modes</summary>
+<summary>Section 4 — 失败模式</summary>
 
-- [Sycophancy](#sycophancy)
-- [Hallucination](#hallucination)
-- [Parametric knowledge](#parametric-knowledge)
-- [Knowledge cutoff](#knowledge-cutoff)
-- [Contextual knowledge](#contextual-knowledge)
-- [Attention relationship](#attention-relationship)
-- [Attention budget](#attention-budget)
-- [Attention degradation](#attention-degradation)
-- [Smart zone](#smart-zone)
-
-</details>
-
-<details>
-<summary>Section 5 — Handoffs</summary>
-
-- [Clearing](#clearing)
-- [Handoff](#handoff)
-- [Handoff artifact](#handoff-artifact)
-- [Spec](#spec)
-- [Ticket](#ticket)
-- [Compaction](#compaction)
-- [Autocompact](#autocompact)
+- [迎合](#迎合)
+- [幻觉](#幻觉)
+- [参数知识](#参数知识)
+- [知识截止日期](#知识截止日期)
+- [上下文知识](#上下文知识)
+- [注意力关系](#注意力关系)
+- [注意力预算](#注意力预算)
+- [注意力退化](#注意力退化)
+- [智能区](#智能区)
 
 </details>
 
 <details>
-<summary>Section 6 — Memory and Steering</summary>
+<summary>Section 5 — 交接</summary>
 
-- [Memory system](#memory-system)
+- [清空会话](#清空会话)
+- [交接](#交接)
+- [交接文档](#交接文档)
+- [规格文档（Spec）](#规格文档spec)
+- [任务单（Ticket）](#任务单ticket)
+- [压缩总结](#压缩总结)
+- [自动压缩](#自动压缩)
+
+</details>
+
+<details>
+<summary>Section 6 — 记忆与引导</summary>
+
+- [记忆系统](#记忆系统)
 - [AGENTS.md](#agentsmd)
-- [Progressive disclosure](#progressive-disclosure)
-- [Context pointer](#context-pointer)
-- [Skill](#skill)
-- [Subagent](#subagent)
+- [渐进式披露](#渐进式披露)
+- [上下文指针](#上下文指针)
+- [技能](#技能)
+- [子智能体](#子智能体)
 
 </details>
 
 <details>
-<summary>Section 7 — Patterns of Work</summary>
+<summary>Section 7 — 工作模式</summary>
 
-- [Human-in-the-loop](#human-in-the-loop)
-- [AFK](#afk)
-- [Automated check](#automated-check)
-- [Automated review](#automated-review)
-- [Human review](#human-review)
-- [Vibe coding](#vibe-coding)
-- [Design concept](#design-concept)
-- [Grilling](#grilling)
+- [人在回路](#人在回路)
+- [AFK（离开键盘）](#afk离开键盘)
+- [自动检查](#自动检查)
+- [自动评审](#自动评审)
+- [人工评审](#人工评审)
+- [氛围编程](#氛围编程)
+- [设计概念](#设计概念)
+- [追问式澄清](#追问式澄清)
 
 </details>
 
-## Section 1 — The Model
+## Section 1 — 模型
 
-### Model
+### 模型
 
-The [parameters](#parameters). [Stateless](#stateless) — does [next-token prediction](#next-token-prediction) and nothing else. "Claude Opus 4.7" and "GPT-5" are models. On its own a model can't do anything agentic; it has to be [harnessed](#harness).
+[参数](#参数)。[无状态](#无状态)：只执行[下一个 Token 预测](#下一个-token-预测)。`Claude Opus 4.7` 和 `GPT-5` 都是模型。模型本身不能执行“智能体级”的动作，它必须被[编排层（Harness）](#编排层harness)包裹起来。
 
-*Usage:*
+_用法：_
 
-"Should we switch the model from Sonnet to Opus for the planning step?"
+“我们在规划阶段要不要把模型从 Sonnet 换成 Opus？”
 
-"Try it — but the harness is doing most of the lifting on this task. The model swap won't help if the [system prompt](#system-prompt) and [tools](#tool) are wrong."
+“可以试，但这个任务的大头通常由编排层决定。如果[系统提示词](#系统提示词)和[工具](#工具)配置不对，换模型也救不了。”
 
-### Parameters
+### 参数
 
-The numbers inside a [model](#model) — often billions of them — tuned during [training](#training). Everything the model "knows" lives in them. Training sets them; [inference](#inference) uses them unchanged. Also called *weights*.
+[模型](#模型) 内的数字（通常有数十亿）在 [训练](#训练) 期间进行了调整。模型“知道”的一切都存在于其中。训练可以塑造他们； [推理](#推理) 不加改动地使用它们。也称为*权重*。
 
-*Usage:*
+_用法：_
 
-"Can we fine-tune it on our codebase?"
+“我们可以在我们的代码库上对其进行微调吗？”
 
-"That'd update the parameters — different model afterwards. For one project it's almost always cheaper to load the codebase as [context](#context) than to retrain."
+“这会更新参数 - 之后会出现不同的模型。对于一个项目来说，将代码库加载为 [上下文](#上下文) 几乎总是比重新训练更便宜。”
 
-### Training
+### 训练
 
-The process that sets a [model](#model)'s [parameters](#parameters), by exposing it to vast amounts of text and adjusting parameters to improve [next-token prediction](#next-token-prediction). A one-time, expensive process done by the [model provider](#model-provider). Encompasses both pre-training (the bulk run) and post-training (later refinements like instruction-following and safety); the distinction doesn't matter at this glossary's level.
+[训练](#训练) 是对[模型](#模型)参数进行大规模优化的过程，目标是提升[下一个 Token 预测](#下一个-token-预测)能力。这个过程通常由[模型提供商](#模型提供商)完成，成本高、周期长。
 
-*Usage:*
+训练常分为预训练和后训练（例如指令遵循与安全对齐）。在本词典语境里，你只需要记住：这属于模型层面的长期工程，不是日常项目迭代会做的事情。
 
-"Can we get it to know our internal API?"
+_用法：_
 
-"Not via training — that's a months-long process by the model provider. Load the API docs into [context](#context) instead, that's the lever you actually have."
+“能不能让它立刻学会我们内部 API？”
 
-### Inference
+“靠训练不现实，那是月级别工程。对单个项目来说，更可行的是把 API 文档加载到 [上下文](#上下文)。”
 
-Running a trained [model](#model) to generate output — what happens on every [model provider request](#model-provider-request). [Parameters](#parameters) stay fixed; the model just does [next-token prediction](#next-token-prediction) over the [context](#context) it's given. Cheap relative to [training](#training), but billed per [token](#token) and the dominant cost of using a model.
+### 推理
 
-*Usage:*
+运行经过训练的 [模型](#模型) 来生成输出 - 每个 [模型提供商请求](#模型提供商请求) 上会发生什么。 [参数](#参数) 保持固定；该模型只是在给定的 [上下文](#上下文) 上执行 [下一个 Token 预测](#下一个-token-预测) 。相对 [训练](#训练) 便宜，但按 [Token（令牌）](#token令牌) 和使用模型的主要成本计费。
 
-"Why does the bill scale with usage instead of being a flat license?"
+_用法：_
 
-"You're paying for inference — every model provider request runs the model on the provider's hardware. Training already happened, but inference costs accrue per request, and a single [turn](#turn) can expand into many requests when [tools](#tool) are called."
+“为什么账单会随着使用情况而变化，而不是统一许可证？”
 
-### Token
+“你要为推理付费——每个模型提供商请求都在提供者的硬件上运行模型。训练已经进行，但每个请求都会产生推理成本，并且当调用 [工具](#工具) 时，单个 [轮次](#轮次) 可以扩展到许多请求。”
 
-The atomic unit a [model](#model) reads and writes. Roughly word-sized but not exactly — common words are one token, rare or long ones split into several. [Context window](#context-window) size, cost, and latency are all counted in tokens.
+### Token（令牌）
 
-*Avoid:* "word" — token boundaries don't match word boundaries, and tokens-per-second / tokens-per-dollar are the units that actually matter.
+[模型](#模型)读写的原子单位。大致接近“词”，但并不等于词：常见词可能是一个 Token，罕见词或长词可能会被切成多个。 [上下文窗口](#上下文窗口)大小、调用成本和延迟都按 Token 计。
 
-*Usage:*
+*避免：*把它叫“单词”。Token 边界并不等于词边界，真正有用的单位是 token/s 和 token/$。
 
-"How big is this prompt going to be?"
+_用法：_
 
-"Run it through the tokenizer — the schema's compact but the JSON keys are weird, so they'll split into more tokens than you think."
+“为什么这次改动这么贵？”
 
-### Next-token prediction
+“因为 Token 用量太高了，不是代码行数高。先看输入和输出 Token 分布。”
 
-What the [model](#model) actually does. Given a [context](#context), it samples one next [token](#token), appends it, and runs again. Every output — a sentence, a [tool call](#tool-call), a thousand-line file — is built one token at a time. The model has no other mode of operation.
+### 下一个 Token 预测
 
-*Usage:*
+[模型](#模型) 实际上做了什么。给定一个 [上下文](#上下文)，它会对下一个 [Token（令牌）](#token令牌) 进行采样，追加它，然后再次运行。每个输出（一个句子、一个 [工具调用](#工具调用)、一千行文件）一次构建一个标记。该模型没有其他操作模式。
 
-"How does the [agent](#agent) 'decide' to call a tool?"
+_用法：_
 
-"It doesn't — it's next-token prediction all the way down. The tool call is just a structured string the [harness](#harness) parses out of the output stream."
+“[智能体（Agent）](#智能体agent) 如何‘决定’调用工具？”
 
-### Non-determinism
+“它不是——它是一直向下的下一个标记预测。工具调用只是 [编排层（Harness）](#编排层harness) 从输出流中解析出的结构化字符串。”
 
-The same input can produce different output. Run a [model](#model) twice with identical [context](#context) and you may get two different answers — sometimes a word, sometimes a completely different approach. Nothing in your code has to change for this to happen.
+### 非确定性
 
-It's a property of how models generate text, and how [model providers](#model-provider) serve [requests](#model-provider-request). There's no setting you can flip to make it go away.
+[非确定性](#非确定性) 指的是：同样的输入、同样的上下文，模型每次运行结果也可能不同。差异可能很小（个别措辞），也可能很大（思路路径不同）。
 
-Expect a spread of results from an [agent](#agent) on the same task. Some days the model will feel sharp; some days it'll feel like it's lost the plot. Same task, different rolls of the dice.
+这是模型生成机制与服务实现共同带来的属性，不是某个开关没配好；通常也无法完全消除。
 
-Be careful not to over-narrativize this. Humans are pattern-matching machines, and a string of bad runs can feel like proof that "the model got worse this week." Usually it's just the distribution.
+实践上要接受“同题多解”：同一任务出现好结果和差结果都正常。先复跑和对比，再判断是不是系统性问题。
 
-_Usage:_
+_用法：_
 
-"Claude has been awful today. Did they ship a worse version?"
+“今天它怎么突然变笨了，是不是平台偷偷降级了？”
 
-"Probably not — model output is non-deterministic. You're going to have good days and bad days on the same task. Try again tomorrow before you go looking for a cause."
+“未必。先把同任务复跑几次再看趋势；很多时候只是非确定性的自然波动。”
 
-### Model provider
+### 模型提供商
 
-Whatever serves a [model](#model) for [inference](#inference). Usually a remote service (Anthropic, OpenAI, Google), but can also be local — Ollama, LM Studio, llama.cpp running on your own machine. The [harness](#harness) doesn't run the model itself; it asks a provider to.
+任何为 [推理](#推理) 提供 [模型](#模型) 的东西。通常是远程服务（Anthropic、OpenAI、Google），但也可以是本地服务 - Ollama、LM Studio、在您自己的计算机上运行的 llama.cpp。 [编排层（Harness）](#编排层harness) 本身不运行模型；它要求提供商这样做。
 
-*Usage:*
+_用法：_
 
-"Can we run this offline for the air-gapped client?"
+“我们可以为气隙客户端离线运行这个吗？”
 
-"Swap the model provider to a local one — Ollama or llama.cpp on their box. The harness doesn't care, it just hits a different endpoint."
+“将模型提供商更换为本地模型提供商 — Ollama 或 llama.cpp 在他们的盒子上。编排层并不关心，它只是到达不同的端点。”
 
-### Harness
+### 编排层（Harness）
 
-Everything around the [model](#model) that turns it into an [agent](#agent): [tools](#tool), [system prompt](#system-prompt), [context-window management](#context-window), permissions, hooks. **Claude.ai** and **Claude Code** run on the same model but behave differently because their harnesses differ.
+[模型](#模型) 周围的一切将其变成 [智能体（Agent）](#智能体agent)：[工具](#工具)、[系统提示词](#系统提示词)、[上下文窗口](#上下文窗口)、权限、挂钩。**Claude.ai**和**Claude Code**在同一模型上运行，但由于它们的编排层不同而表现不同。
 
-*Usage:*
+_用法：_
 
-"Same model, why is Claude Code editing files and Claude.ai just answering questions?"
+“同样的模型，为什么 Claude Code 正在编辑文件，而 Claude.ai 只是回答问题？”
 
-"Different harnesses — Claude Code has [filesystem](#filesystem) tools, a different system prompt, and a permission layer. The model isn't the variable here."
+“不同的工具 - Claude Code 有 [文件系统](#文件系统) 工具、不同的系统提示符和权限层。模型不是这里的变量。”
 
-### Model provider request
+### 模型提供商请求
 
-One round-trip from the [harness](#harness) to the [model provider](#model-provider). The harness sends the current [context](#context); the provider returns one response (a [tool call](#tool-call) or a final answer). A single user message can spawn many model provider requests if the [agent](#agent) calls [tools](#tool) — each [tool result](#tool-result) triggers another request.
+[模型提供商请求](#模型提供商请求) 是一次完整往返：
+编排层把当前[上下文](#上下文)发给[模型提供商](#模型提供商)，提供商返回模型输出（可能是最终回答，也可能是[工具调用](#工具调用)）。
 
-*Usage:*
+如果[智能体（Agent）](#智能体agent)在一个用户问题里多次调用[工具](#工具)，每次[工具结果](#工具结果)回传后都可能触发新一轮模型提供商请求，所以一次对话轮次里可能有很多次请求。
 
-"One question burned forty thousand [tokens](#token)?"
+_用法：_
 
-"Look at the tool calls — twelve grep, eight read, four edits. Each tool result spawns another model provider request, and the whole [session](#session) prefix re-sends every time."
+“为什么一个问题就用了四万 Token？”
 
-### Input tokens
+“看工具链路：12 次 grep、8 次读取、4 次编辑。每次工具结果都会触发新请求，而且会重发会话前缀。”
 
-[Tokens](#token) the [harness](#harness) sends on each [model provider request](#model-provider-request). Billed at a lower rate than [output tokens](#output-tokens).
+### 输入 Token
 
-*Usage:*
+[Token（令牌）](#token令牌) [编排层（Harness）](#编排层harness) 在每个 [模型提供商请求](#模型提供商请求) 上发送。计费费率低于 [输出 Token](#输出-token)。
 
-"Bill's high but the [agent](#agent)'s barely writing anything."
+_用法：_
 
-"It's the input tokens — every [turn](#turn) re-sends the whole [session](#session). Without the [prefix cache](#prefix-cache) you re-pay for the history each request."
+“账单很高，但 [智能体（Agent）](#智能体agent) 几乎没写任何东西。”
 
-### Output tokens
+“这是输入Token - 每个 [轮次](#轮次) 都会重新发送整个 [会话](#会话)。如果没有 [前缀缓存](#前缀缓存)，您将为每个请求的历史记录重新付费。”
 
-[Tokens](#token) the [model](#model) generates back. Billed at a higher rate than [input tokens](#input-tokens), since they cost more compute to produce.
+### 输出 Token
 
-*Usage:*
+[Token（令牌）](#token令牌) [模型](#模型) 生成回来。计费费率高于 [输入 Token](#输入-token)，因为它们的生产成本更高。
 
-"The refactor [session](#session) is burning through credit even though the inputs are small."
+_用法：_
 
-"[Agent](#agent)'s rewriting whole files instead of patching. Output tokens cost roughly five times the input rate — get it emitting edits and the bill drops."
+“尽管投入很小，但重构 [会话](#会话) 正在消耗信用。”
 
-### Prefix cache
+“[智能体（Agent）](#智能体agent) 重写整个文件而不是修补。输出Token的成本大约是输入速率的五倍——让它发出编辑，账单就会下降。”
 
-The [provider](#model-provider)-side store that lets consecutive [model provider requests](#model-provider-request) skip re-processing a shared prefix. When the start of a request matches the start of a recent one — same [system prompt](#system-prompt), same history up to some point — the provider reuses its prior work and bills those [tokens](#token) as [cache tokens](#cache-tokens) at a much lower rate.
+### 前缀缓存
 
-Anything that changes the prefix (reordering files, rewriting the system prompt mid-[session](#session), injecting a timestamp near the top) invalidates the cache from that point on, and the rest of the request bills at full [input token](#input-tokens) rate.
+[前缀缓存](#前缀缓存) 是模型提供商侧的复用机制：当连续[模型提供商请求](#模型提供商请求)开头部分一致（如相同[系统提示词](#系统提示词)+相似历史前缀），提供商会复用已有计算，把对应 [Token（令牌）](#token令牌) 按更低费率计费。
 
-_Usage:_
+任何会改变前缀的操作（例如改系统提示词、重排上文、在前部注入时间戳）都可能让缓存从变化点失效，后续请求回到普通[输入 Token](#输入-token)计费。
 
-"Why did the bill spike halfway through the session?"
+_用法：_
 
-"[Harness](#harness) started injecting the current time into the system prompt every [turn](#turn). Prefix cache breaks at the first changed token, so every request after that billed at full rate."
+“为什么会话跑到一半，账单突然跳高？”
 
-### Cache tokens
+“编排层在每轮都注入当前时间，导致前缀每次变化，缓存命中断掉了。”
 
-[Input tokens](#input-tokens) the [provider](#model-provider) has cached from a previous [model provider request](#model-provider-request) so it doesn't have to re-process them. When consecutive requests share a prefix, the provider reuses the work via its [prefix cache](#prefix-cache) and bills the cached portion at a much lower rate. The lever that makes long [sessions](#session) affordable — without it, every [turn](#turn) re-pays for the whole history.
+### 缓存 Token
 
-*Usage:*
+[缓存 Token](#缓存-token) 是指已被[模型提供商](#模型提供商)缓存并复用的[输入 Token](#输入-token)。命中缓存后，这部分通常按更低费率计费。
 
-"Cost on long sessions is brutal — eight bucks for a refactor."
+对长[会话](#会话)来说，这往往是控制成本的关键；没有缓存命中时，每个[轮次](#轮次)都可能为历史前缀反复付费。
 
-"Check the cache tokens. If the [harness](#harness) is reordering the [system prompt](#system-prompt) or files between turns, the prefix breaks and you re-pay full input rate every request."
+_用法：_
 
-## Section 2 — Sessions, Context Windows & Turns
+“感觉这轮输出不多，为什么还是贵？”
 
-### Stateless
+“看缓存命中。如果前缀被改动打断了，输入 Token 成本会明显上升。”
 
-Carries no information forward. The [model](#model) is stateless across [model provider requests](#model-provider-request) — each request resends the full [context window](#context-window), because the model has no way to see anything else. An [agent](#agent) is stateless across [sessions](#session) by default: a new session starts empty, with no trace of prior ones. Counterpart to [stateful](#stateful).
+## Section 2 — 会话、上下文窗口与轮次
 
-*Usage:*
+### 无状态
 
-"Why does it forget the convention every time I [clear](#clearing)?"
+不传递任何信息。 [模型](#模型) 在 [模型提供商请求](#模型提供商请求) 上是无状态的 - 每个请求都会重新发送完整的 [上下文窗口](#上下文窗口)，因为模型无法看到其他任何内容。默认情况下，[智能体（Agent）](#智能体agent) 在 [会话](#会话) 上是无状态的：新会话开始时为空，没有先前会话的痕迹。与 [有状态](#有状态) 相对应。
 
-"The model's stateless — the new session starts empty. If you want it carried, write it to [AGENTS.md](#agentsmd) or a memory file the [harness](#harness) loads at session start."
+_用法：_
 
-### Context
+“为什么每次我 [清空会话](#清空会话) 时它都会忘记约定？”
 
-The relevant information the [agent](#agent) has access to right now. The abstract noun — not the raw input the model sees (that's the [context window](#context-window)), not the running history (that's the [session](#session)), but *what the agent knows that's pertinent to the task*. "Loading something into context" means making it part of this set; "context engineering" is the discipline of curating it.
+“模型是无状态的 - 新会话开始时为空。如果您希望携带它，请将其写入 [AGENTS.md](#agentsmd) 或 [编排层（Harness）](#编排层harness) 在会话开始时加载的内存文件。”
 
-*Usage:*
+### 上下文
 
-"It keeps inventing fields that aren't in the type."
+[智能体（Agent）](#智能体agent) 目前可以访问的相关信息。抽象名词 - 不是模型看到的原始输入（即 [上下文窗口](#上下文窗口)），也不是运行历史记录（即 [会话](#会话)），而是*智能体知道与任务相关的内容*。 “将某些内容加载到上下文中”意味着使其成为该集合的一部分； “情境工程”是策划它的学科。
 
-"The type file isn't in context — it's reading the call sites and guessing. Read the definition in first."
+_用法：_
 
-### Context window
+“它不断地发明不属于该类型的领域。”
 
-Everything the [model](#model) sees on each [model provider request](#model-provider-request). Finite, model-specific, and the *only* surface through which the model perceives anything.
+“类型文件不在上下文中 - 它正在读取调用站点并猜测。首先阅读定义。”
 
-*Avoid:* "memory" — the context window is working state and doesn't persist across [sessions](#session). [Memory](#memory-system) is a separate concept layered on top.
+### 上下文窗口
 
-*Usage:*
+[模型](#模型) 在每个 [模型提供商请求](#模型提供商请求) 上看到的所有内容。有限的、特定于模型的、模型感知任何事物的“唯一”表面。
 
-"Can I just paste the whole monorepo into the prompt?"
+_避免：_“内存”——上下文窗口处于工作状态，并且不会在 [会话](#会话) 上持续存在。 [记忆系统](#记忆系统) 是一个位于顶层的独立概念。
 
-"The context window's 200k [tokens](#token) — that's maybe a fifth of the repo. Pick the files the task touches, leave the rest behind a [tool call](#tool-call)."
+_用法：_
 
-### Stateful
+“我可以将整个 monorepo 粘贴到提示中吗？”
 
-Carries information forward. A [session](#session) is stateful across [turns](#turn) — [context](#context) accumulates as the session runs, which is why long sessions drift into the [dumb zone](#smart-zone). An [agent](#agent) can be made stateful across **sessions** by adding a [memory system](#memory-system) that persists information into the [environment](#environment) and reloads it at the start of future sessions. The [model](#model) is never stateful; any apparent continuity is the [harness](#harness) re-feeding context. Counterpart to [stateless](#stateless).
+“上下文窗口有 200k [Token（令牌）](#token令牌) — 这可能是存储库的五分之一。选择任务涉及的文件，将其余的留在 [工具调用](#工具调用) 后面。”
 
-*Usage:*
+### 有状态
 
-"It remembered my preferences from yesterday — does that mean the model learned them?"
+“有状态”表示信息会向后续过程延续。
 
-"No, the agent's stateful because the harness wrote them to a memory file and reloaded them at session start. The model itself saw nothing of yesterday."
+[会话](#会话)在[轮次](#轮次)之间天然是有状态的：上下文会不断累积，这也是长会话容易滑向[智能区](#智能区)迟钝段的原因。
 
-### Agent
+如果引入[记忆系统](#记忆系统)，把信息写入[环境](#环境)并在后续会话加载，[智能体（Agent）](#智能体agent)就可以跨会话表现出“有状态”。
 
-A [model](#model) [harnessed](#harness) with [tools](#tool), a [system prompt](#system-prompt), and a [context window](#context-window), that takes [turns](#turn) with a user. *Claude Code is an agent. Cursor is an agent. Claude.ai is an agent.* An agent is what you actually talk to — it's the model in motion, configured for a purpose.
+要注意：[模型](#模型)本身始终是无状态的；所谓连续性来自[编排层（Harness）](#编排层harness)把历史信息重新喂给它。
 
-*Avoid:* "the AI", "the bot" (too vague — they hide whether you mean the parameters or the harnessed thing).
+_用法：_
 
-*Usage:*
+“它为什么在这个会话里还记得前面讨论的约束？”
 
-"Which agent are you using for the migration?"
+“因为会话是有状态的；消息和工具结果都在持续累积。”
 
-"Claude Code locally, Cursor for the UI work — same model underneath, different harnesses."
+### 智能体（Agent）
 
-### System prompt
+一个[模型](#模型)被[编排层（Harness）](#编排层harness)包裹后，接入[工具](#工具)、[系统提示词](#系统提示词)和[上下文窗口](#上下文窗口)，并与用户按[轮次](#轮次)互动，就形成了一个“智能体（Agent）”。_Claude Code 是一种智能体，Cursor 是一种智能体，Claude.ai 也是一种智能体。_ 你真正对话的对象是智能体，而不是裸模型。
 
-The instructions the [harness](#harness) prepends to every [model provider request](#model-provider-request) — the [agent](#agent)'s standing brief: who it is, how to behave, which [tools](#tool) it can call, what conventions to follow. Usually stable across a [session](#session).
+_避免：_“AI”“机器人”这种说法太笼统，容易混淆你指的是模型参数，还是编排后的系统。
 
-*Usage:*
+_用法：_
 
-"Two harnesses, same [model](#model), totally different behavior on the same prompt."
+“这次迁移你用的是哪个智能体？”
 
-"Different system prompts. One's tuned for terse code edits, the other for explaining — that's where the divergence lives, before your message even arrives."
+“本地用 Claude Code，UI 用 Cursor。底层模型一样，但编排层不一样。”
 
-### Session
+### 系统提示词
 
-One bounded run of interaction with an [agent](#agent). Starts empty, accumulates messages, [tool results](#tool-result), and files read, and ends when [cleared](#clearing), closed, or [compacted](#compaction) into a fresh session. The session is what *fills* the [context window](#context-window): if the context window is the box, the session is the stuff slowly filling it up. Work too large for a single context window must be split across sessions.
+[系统提示词](#系统提示词) 是[编排层（Harness）](#编排层harness)在每次[模型提供商请求](#模型提供商请求)前附加的常驻指令。它通常定义：
 
-*Usage:*
+- 智能体是谁
+- 应该如何表达与决策
+- 能调用哪些[工具](#工具)
+- 要遵循哪些规则
 
-"How long can one session run before it falls apart?"
+系统提示词往往在一个[会话](#会话)内保持稳定，因此它对输出风格和行为边界影响很大。
 
-"Depends on the work — a focused refactor stays sharp longer than open-ended research. Once the session bloats, [hand off](#handoff) or compact, don't push through."
+_用法：_
 
-### Turn
+“同一个模型，为什么两个客户端表现差这么多？”
 
-One user message plus everything the [agent](#agent) does in response, up until it yields back to the user. Contains one or more [model provider requests](#model-provider-request) — many, if the agent calls [tools](#tool). A clarifying question closes the turn; your reply opens the next one. The hierarchy is [session](#session) **> Turn > Model provider request**.
+“先看系统提示词。一个偏执行，一个偏解释，行为会明显不同。”
 
-*Usage:*
+### 会话
 
-"One turn took two minutes?"
+[会话](#会话) 是你与[智能体（Agent）](#智能体agent)的一段完整协作过程。它从空状态开始，逐步累积消息、[工具结果](#工具结果)和读取过的内容；在[清空会话](#清空会话)、关闭，或[压缩总结](#压缩总结)后结束并进入新会话。
 
-"It made fourteen [tool calls](#tool-call) inside that turn — each one is a separate model provider request. Latency stacks up before the agent finally yields back to you."
+如果把[上下文窗口](#上下文窗口)比作盒子，会话就是不断往里装内容的过程。工作量超出单个上下文窗口时，就应该拆成多会话推进。
 
-## Section 3 — Tools & Environment
+_用法：_
 
-### Environment
+“一个会话一般能跑多久才该换？”
 
-The world the [agent](#agent) acts on — anything outside the [harness](#harness) that the agent perceives through [tool results](#tool-result) and changes through [tool calls](#tool-call). The harness *runs* the agent; the environment is what the agent *works in*. A file like [`AGENTS.md`](#agentsmd) lives in the environment; the harness is what loads it into the [context window](#context-window). A [filesystem](#filesystem) is the most common kind of environment, but not the only one (a database, a remote API, a browser session can all be environments).
+“看任务类型。定向重构通常比开放探索更耐久；当会话明显膨胀，就该交接或压缩，不要硬推。”
 
-*Avoid:* using "environment" for the runtime or the harness itself — the harness is the wrapper, the environment is the workspace.
+### 轮次
 
-*Usage:*
+一个[轮次](#轮次)是：一条用户消息，加上[智能体（Agent）](#智能体agent)从开始处理到最终回复用户的完整过程。它可能包含一个或多个[模型提供商请求](#模型提供商请求)；如果智能体调用了[工具](#工具)，通常会产生多个请求。一个澄清问题结束当前轮次，你的下一条回复开启下一轮。
 
-"The agent can't see the staging DB schema."
+层级关系是：[会话](#会话)**> 轮次 > 模型提供商请求**。
 
-"Wire it into the environment — give it a `psql` [tool](#tool) scoped to read-only on staging. The harness is fine, it just has nothing to act on."
+_用法：_
 
-### Filesystem
+“为什么这一轮这么慢？”
 
-A tree of files and directories the [agent](#agent) reads from, writes to, and executes within — the default kind of [environment](#environment) for a coding agent. [AGENTS.md](#agentsmd), [skills](#skill), source code, build scripts, and [tool](#tool) configs all live in a filesystem. When a [harness](#harness) "starts in your project," it's pointing the agent at a filesystem.
+“这轮里触发了 14 次[工具调用](#工具调用)。每次工具结果回传都会引发新的模型请求，延迟会累加。”
 
-*Usage:*
+## Section 3 — 工具与环境
 
-"Why isn't it picking up my AGENTS.md?"
+### 环境
 
-"It's running against a different filesystem — the [sandbox](#sandbox) mounted the parent dir, not the project root. Repoint the harness."
+“环境”是指[编排层（Harness）](#编排层harness)之外、[智能体（Agent）](#智能体agent)实际工作的世界：它通过[工具结果](#工具结果)感知环境，通过[工具调用](#工具调用)改变环境。编排层负责“运行智能体”，环境是“智能体干活的地方”。像 [AGENTS.md](#agentsmd) 这样的文件属于环境；编排层会把它们装进[上下文窗口](#上下文窗口)。[文件系统](#文件系统)是最常见的环境类型，但不是唯一的（数据库、远程 API、浏览器会话也都可以是环境）。
 
-### Tool
+*避免：*把“环境”用来指运行时或编排层本身。编排层是包装器，环境是工作区。
 
-A function the [harness](#harness) exposes for the [agent](#agent) to call — Read, Write, Bash, Search. Tools are how an agent perceives and acts on the [environment](#environment): it can't see the environment except through [tool results](#tool-result), and can't change it except through [tool calls](#tool-call). Each tool call costs an extra [model provider request](#model-provider-request), since the result has to go back to the model before it can decide what to do next.
+_用法：_
 
-*Usage:*
+“智能体看不到临时数据库的 schema。”
 
-"Can the agent query staging directly?"
+“把它接到环境里，给一个只读范围的 `psql` [工具](#工具)。现在安全没问题，但它之前确实无事可做。”
 
-"Add a `psql` tool to the harness, scoped read-only on staging. Without a tool for it, the agent's blind to anything outside the [filesystem](#filesystem)."
+### 文件系统
 
-### Tool call
+[智能体（Agent）](#智能体agent) 在其中读取、写入和执行的文件和目录树 - 编码智能体的默认类型 [环境](#环境)。 [AGENTS.md](#agentsmd)、[技能](#技能)、源代码、构建脚本和 [工具](#工具) 配置都位于文件系统中。当 [编排层（Harness）](#编排层harness) “在您的项目中启动”时，它将智能体指向文件系统。
 
-The [model](#model)'s output naming a [tool](#tool) and its arguments — just structured text. It doesn't do anything on its own; the [harness](#harness) has to read it and execute. Produced by the model in one [model provider request](#model-provider-request).
+_用法：_
 
-*Usage:*
+“为什么它不接收我的 AGENTS.md？”
 
-"It said it ran the tests but the file timestamps haven't changed."
+“它针对不同的文件系统运行 - [沙箱](#沙箱) 安装了父目录，而不是项目根目录。重新指向编排层。”
 
-"Look at the transcript — did it actually emit a tool call, or just describe running them? The model produces the call, but if the harness didn't execute it, nothing happened."
+### 工具
 
-### Tool result
+[编排层（Harness）](#编排层harness) 公开供 [智能体（Agent）](#智能体agent) 调用的函数 — Read、Write、Bash、Search。工具是智能体感知和作用于 [环境](#环境) 的方式：除了通过 [工具结果](#工具结果) 之外，它无法看到环境，并且除了通过 [工具调用](#工具调用) 之外，它无法更改环境。每个工具调用都会花费额外的 [模型提供商请求](#模型提供商请求) ，因为结果必须返回到模型才能决定下一步做什么。
 
-What the [harness](#harness) sends back after executing a [tool call](#tool-call) — the file contents, the command output, the error. The [agent](#agent)'s only window onto the [environment](#environment). Travels back to the [model](#model) in the *next* [model provider request](#model-provider-request), where the model decides what to do with it. Tool call and tool result are two ends of the same exchange, both inside one [turn](#turn).
+_用法：_
 
-*Usage:*
+“智能体可以直接查询分期吗？”
 
-"It's reasoning about the file like it's empty."
+“将 `psql` 工具添加到工具中，在暂存时范围为只读。如果没有工具，智能体将无法看到 [文件系统](#文件系统) 之外的任何内容。”
 
-"The tool result came back as a permission denial, not the contents. The model only saw the error string — it has no other window onto the file."
+### 工具调用
+
+[模型](#模型) 的输出命名了 [工具](#工具) 及其参数——只是结构化文本。它本身不做任何事情； [编排层（Harness）](#编排层harness) 必须读取它并执行。由 [模型提供商请求](#模型提供商请求) 中的模型制作。
+
+_用法：_
+
+“它说它运行了测试，但文件时间戳没有改变。”
+
+“查看记录 - 它实际上发出了工具调用，还是只是描述了运行它们？模型生成了调用，但如果编排层没有执行它，则什么也不会发生。”
+
+### 工具结果
+
+执行 [工具调用](#工具调用) 后 [编排层（Harness）](#编排层harness) 发回的内容 — 文件内容、命令输出、错误。 [智能体（Agent）](#智能体agent) 是通往 [环境](#环境) 的唯一窗口。返回到*下一个* [模型提供商请求](#模型提供商请求) 中的 [模型](#模型)，模型决定如何处理它。工具调用和工具结果是同一交换的两端，都在一个 [轮次](#轮次) 内。
+
+_用法：_
+
+“它对文件进行推理，就像它是空的一样。”
+
+“工具返回的结果是权限拒绝，而不是内容。该模型只看到了错误字符串 - 它没有其他窗口可以看到该文件。”
 
 ### MCP
 
-**Model Context Protocol.** A protocol for plugging external tool servers into a [harness](#harness) — how an [agent](#agent) gets [tools](#tool) beyond what the harness ships with. The agent never "calls MCP"; it calls a tool, and the harness happens to have gotten that tool from an MCP server. Also exposes resources (read-only data) and prompts (reusable templates), but tool provision is the primary use.
+**MCP（Model Context Protocol）**是一种协议，用来把外部工具服务器接入[编排层（Harness）](#编排层harness)。也就是[智能体（Agent）](#智能体agent)如何获得“编排层默认能力之外”的[工具](#工具)。智能体不会“调用 MCP”，它调用的是具体工具，只不过这个工具来自 MCP 服务器。MCP 也可暴露资源（只读数据）和提示模板，但最核心用途仍是工具接入。
 
-_Usage:_
+_用法：_
 
-"The agent needs to read tickets from Linear."
+“它怎么拿到 Jira 权限的？”
 
-"Configure the harness to use the Linear MCP server — it exposes the Linear API as tools the agent can call. Saves you writing custom tool wrappers."
+“通过 MCP。编排层挂了 Jira 工具服务器，智能体调的是 Jira 工具，不是直接调 MCP 协议本身。”
 
-### Permission request
+### 权限请求
 
-What the [harness](#harness) shows the user before executing a [tool call](#tool-call) that isn't pre-approved. The [model](#model) produces a tool call; instead of running it immediately, the harness pauses and asks. Approve and it runs; deny and the harness reports the denial back to the model as a [tool result](#tool-result). The mechanism by which a harness puts a human in the [loop](#human-in-the-loop) for risky or sensitive actions.
+[权限请求](#权限请求) 是[编排层（Harness）](#编排层harness)在执行高风险或未预授权[工具调用](#工具调用)前，向用户发起的确认。
 
-*Usage:*
+流程通常是：模型先产出工具调用，编排层暂停执行并请求审批；同意则执行，拒绝则把拒绝结果作为[工具结果](#工具结果)回传模型。
 
-"It's been blocked on a permission request for ten minutes — I was in a meeting."
+这是把人纳入[人在回路](#人在回路)的关键机制。
 
-"That's the cost of human-in-the-loop. Pre-approve the safe [tools](#tool) so the request only fires on the actually-risky calls."
+_用法：_
 
-### Permission mode
+“为什么它总弹窗打断我？”
 
-The permission-gating slice of an [agent mode](#agent-mode) — which [tool calls](#tool-call) trigger a [permission request](#permission-request) and which run automatically. The original purpose of mode systems before [harnesses](#harness) started bundling behavioral instructions on top.
+“因为当前权限策略太保守。可把低风险只读工具预授权，仅对真正高风险操作弹请求。”
 
-*Usage:*
+### 权限模式
 
-"It paused on every grep — totally killed the [AFK](#afk) run."
+[智能体模式](#智能体模式) 的权限门控切片 — [工具调用](#工具调用) 触发 [权限请求](#权限请求) 并自动运行。 [编排层（Harness）](#编排层harness) 之前模式系统的最初目的是开始在顶部捆绑行为指令。
 
-"Loosen the permission mode for read-only [tools](#tool), keep prompting on writes and shell. Most permission requests on a research [session](#session) are noise."
+_用法：_
 
-### Agent mode
+“它在每次 grep 时都会暂停——完全杀死了 [AFK（离开键盘）](#afk离开键盘) 运行。”
 
-A preset that shapes how the [agent](#agent) operates at runtime — bundles a [permission mode](#permission-mode) with behavioral instructions injected into the [system prompt](#system-prompt). Examples: a default that prompts on risky calls, a **plan mode** that blocks edits and steers the agent toward research, an **accept-edits** mode that auto-approves edits, a **bypass permissions** mode (colloquially **YOLO mode**) that auto-approves everything. Can flip [mid-session](#session).
+“放松只读 [工具](#工具) 的权限模式，继续提示写入和 shell。大多数研究 [会话](#会话) 的权限请求都是噪音。”
 
-*Vendor terms:* Claude Code calls these "permission modes," Codex calls them "approval modes" — both predate behavioral bundling.
+### 智能体模式
 
-*Usage:*
+[智能体模式](#智能体模式) 是运行预设：把[权限模式](#权限模式)与注入[系统提示词](#系统提示词)的行为规则一起打包。
 
-"It keeps editing files when I just want a plan."
+典型模式包括：
 
-"Switch to plan mode — it'll block writes and stay in research."
+- 需要审批高风险操作
+- 只允许研究不允许编辑（计划模式）
+- 自动接受编辑
+- 全自动放行（常被称为 YOLO 模式）
 
-"What about for the [AFK](#afk) run later?"
+模式可在[会话](#会话)中途切换。
 
-"Bypass mode, but only inside the [sandbox](#sandbox)."
+*供应商术语：*Claude Code 常把它归到“Permission Mode”，Codex 常说“Approval Mode”；本质上都在描述权限与行为控制的组合。
 
-### Sandbox
+_用法：_
 
-An isolated [environment](#environment) the [agent](#agent) runs inside — a container, VM, ephemeral [filesystem](#filesystem), or restricted-permission shell. Limits the blast radius of agent actions: even if the agent runs destructive commands or fetches something malicious, the damage is contained. The safety substrate that makes [AFK](#afk) practical.
+“这轮我们要怎么跑？”
 
-*Usage:*
+“先计划模式做方案，确认后切自动接受编辑；AFK 前再收紧到沙箱内可放行。”
 
-"I want to let it run [bypass-permissions](#agent-mode) overnight but I'm not ready for that."
+### 沙箱
 
-"Put it in a sandbox — fresh container, no credentials mounted, no network out. Worst case it nukes its own filesystem and you discard the container."
+[智能体（Agent）](#智能体agent) 在一个隔离的 [环境](#环境) 内部运行 - 容器、虚拟机、临时 [文件系统](#文件系统) 或受限权限 shell。限制智能体操作的爆炸半径：即使智能体运行破坏性命令或获取恶意内容，损害也会受到控制。使 [AFK（离开键盘）](#afk离开键盘) 变得实用的安全基础。
 
-## Section 4 — Failure Modes
+_用法：_
 
-### Sycophancy
+“我想让它过夜运行[智能体模式](#智能体模式)，但我还没准备好。”
 
-Confidently agreeable [model](#model) output. Caused by [training](#training): the model was shaped to favor answers humans liked, and humans tend to like agreement more than they like being told they're wrong. So the model learned that agreeing is rewarded — even when the agreement is incorrect.
+“把它放在沙箱中——新的容器，没有安装凭据，没有网络。最坏的情况是它会破坏自己的文件系统，然后你就丢弃容器。”
 
-_Surfaces as:_
+## Section 4 — 失败模式
 
-- _Caving under pushback_ — reverses a correct answer when you say "are you sure?".
-- _Praising bad input_ — agrees your broken plan is brilliant before analysing it.
-- _Biased framing_ — review skews positive when you signal you wrote it; negative when you signal someone else did. Same artifact, different verdict.
-- _Mimicry_ — repeats your mistakes back to you as confirmation.
+### 迎合
 
-_Diagnostic test:_ would the model have said this without your steer? If the only thing that changed was your tone or framing, it's sycophancy, not a real shift in analysis.
+[迎合](#迎合) 指的是：模型输出看起来很顺耳，但核心是在迎合你的立场，而不是坚持判断正确性。它与[训练](#训练)有关：模型会学到“让人满意”的表达模式，而人类很多时候更偏好被认同。
 
-_Fix:_ hide your preferences. Phrase prompts neutrally — "review this code" not "is this code good?".
+_常见表现：_
 
-_Avoid:_ using "sycophancy" for any wrong answer that happens to please you. Without the diagnostic test, the term has no more value than "wrong."
+- 你一质疑，它就把原本正确的结论改掉。
+- 先夸你的方案“很棒”，再补分析。
+- 同一段代码，只因你暗示“这是我写的”，评价就明显变软。
+- 复述你的错误前提，并把它当事实继续推理。
 
-_Usage:_
+*诊断方式：*把你的态度信号拿掉，再问一次。如果只改了语气，结论就跟着变，多半就是迎合。
 
-"It said my refactor plan looked great, then I asked 'are you sure?' and it walked the whole thing back."
+*修复：*用中性提示，少给倾向信号。比如用“请审查这段代码”，而不是“这段代码写得好吗？”
 
-"Classic sycophancy — it agreed first because you sounded confident, then caved because you sounded doubtful. The plan's quality didn't change, your tone did. [Clear](#clearing) and re-ask without signalling either way."
+*避免：*不要把任何“你喜欢听的错误答案”都叫迎合；要通过诊断对比来判断。
 
-### Hallucination
+_用法：_
 
-Confidently-wrong [model](#model) output. Two flavors with different causes and fixes:
+“它先说我的重构方案很好，我追问‘你确定吗’，它又全盘反过来了。”
 
-- *Factuality hallucination* — invented or wrong facts about the world (a function that doesn't exist, a wrong API signature, a fake citation). Caused by [parametric knowledge](#parametric-knowledge) gaps, often past the [knowledge cutoff](#knowledge-cutoff). Fix: load the right [contextual knowledge](#contextual-knowledge).
-- *Faithfulness hallucination* — output drifts from the **contextual knowledge** that's loaded, the user's instructions, or the model's own prior reasoning. Symptom of [attention degradation](#attention-degradation); worsens in the [dumb zone](#smart-zone). Fix: [clear](#clearing) or [compact](#compaction).
+“这是典型迎合。方案质量没变，变的是你的语气。先 [清空会话](#清空会话)，再用中性表述重问。”
 
-*Avoid:* "hallucination" as a bare synonym for "wrong" — without naming the flavor, the term has no diagnostic value.
+### 幻觉
 
-*Usage:*
+确实错误的 [模型](#模型) 输出。具有不同原因和修复方法的两种口味：
 
-"It hallucinated a `parseAsync` method on the schema."
+- _事实幻觉_ — 发明或错误的关于世界的事实（不存在的函数、错误的 API 签名、虚假引用）。由 [参数知识](#参数知识) 间隙引起，通常超过 [知识截止日期](#知识截止日期)。修复：加载正确的[上下文知识](#上下文知识)。
+- _忠实幻觉_ - 输出偏离加载的**上下文知识**、用户的指令或模型自己的先前推理。 [注意力退化](#注意力退化) 的症状； 常见于进入 [智能区](#智能区) 的迟钝段后。修复：[清空会话](#清空会话) 或 [压缩总结](#压缩总结)。
 
-"Factuality or faithfulness?"
+_避免：_“幻觉”作为“错误”的同义词——如果不指出其味道，这个术语就没有诊断价值。
 
-"The method exists in the docs I pasted — it just stopped reading them after [turn](#turn) forty."
+_用法：_
 
-"Faithfulness then. Compact and reload, don't bother adding more docs."
+“它在模式上产生了 `parseAsync` 方法的幻觉。”
 
-### Parametric knowledge
+“事实还是忠诚？”
 
-What the [model](#model) "knows" from [training](#training), stored in its [parameters](#parameters). Frozen at training time — the model can't see its own parameters or update them. Detail is lost in the squeeze: billions of facts cram into a fixed number of parameters, and the rare ones blur. Source of fluency on common topics, and of fabrication on uncommon ones. Counterpart to [contextual knowledge](#contextual-knowledge).
+“该方法存在于我粘贴的文档中 - 它只是在 [轮次](#轮次) 四十之后停止读取它们。”
 
-*Usage:*
+“那就忠实吧。压缩并重新加载，不用费心添加更多文档。”
 
-"It writes flawless React but invents methods on our internal SDK."
+### 参数知识
 
-"React is dense in the parametric knowledge — millions of training examples. Your SDK isn't, so the model fills in plausible-looking shapes. Load the SDK docs into [context](#context)."
+[模型](#模型) 从 [训练](#训练)“知道”的内容存储在其 [参数](#参数) 中。在训练时冻结——模型无法看到自己的参数或更新它们。细节在挤压中丢失：数十亿的事实塞进固定数量的参数中，而罕见的事实则变得模糊。对常见话题的流利来源以及对不常见话题的编造。与 [上下文知识](#上下文知识) 相对应。
 
-### Knowledge cutoff
+_用法：_
 
-The date past which a [model](#model) has no [parametric knowledge](#parametric-knowledge). Libraries, APIs, and events from after the cutoff are fabrication traps unless their docs are loaded as [contextual knowledge](#contextual-knowledge). Each model release ships with its own cutoff.
+“它编写了完美的 React，但在我们的内部 SDK 上发明了方法。”
 
-*Usage:*
+“React 的参数知识非常丰富 - 数以百万计的训练示例。而您的 SDK 则不然，因此模型会填充看似合理的形状。将 SDK 文档加载到 [上下文](#上下文) 中。”
 
-"It keeps writing the v3 SDK syntax — we're on v5."
+### 知识截止日期
 
-"v5 shipped after the knowledge cutoff. Load the v5 changelog as contextual knowledge, otherwise it'll keep fabricating from the older parametric version."
+[模型](#模型) 不再有 [参数知识](#参数知识) 的日期。截止后的库、API 和事件都是制造陷阱，除非它们的文档作为 [上下文知识](#上下文知识) 加载。每个型号的发布都有自己的截止日期。
 
-### Contextual knowledge
+_用法：_
 
-Facts the [agent](#agent) can read directly from the [context](#context) right now — the user's task, files the agent has read in, [tool results](#tool-result), [AGENTS.md](#agentsmd) content loaded at [session](#session) start. Counterpart to [parametric knowledge](#parametric-knowledge): parametric is *recalled* from the parameters; contextual is *read* from the [window](#context-window). [Hallucinations](#hallucination) are much less common when the agent works from contextual knowledge — the answer is right in front of it, not dredged up from a blurred memory.
+“它一直在编写 v3 SDK 语法 - 我们正在使用 v5。”
 
-*Reach for this term* only when contrasting with parametric knowledge; otherwise just say **context**.
+“v5 在知识截止后发布。加载 v5 变更日志作为上下文知识，否则它将继续从旧的参数版本进行构建。”
 
-*Avoid:* "working memory" — contextual knowledge is what's in the window *now*; a [memory system](#memory-system) is what gets cross-session content into it. Different scales, don't conflate.
+### 上下文知识
 
-*Usage:*
+[智能体（Agent）](#智能体agent) 现在可以直接从 [上下文](#上下文) 读取事实 — 用户的任务、智能体已读入的文件、在 [会话](#会话) 启动时加载的 [工具结果](#工具结果)、[AGENTS.md](#agentsmd) 内容。与 [参数知识](#参数知识) 相对应：参数是从参数中“调用”的；上下文是从 [上下文窗口](#上下文窗口) *读取*的。当智能体根据上下文知识工作时，[幻觉](#幻觉) 就不太常见了——答案就在它的前面，而不是从模糊的记忆中挖掘出来。
 
-"Why does it nail the API when I paste the docs and fabricate it when I don't?"
+_仅在与参数知识对比时才使用该术语_；否则就只说**上下文**。
 
-"With the docs in, it's contextual knowledge — reading off the page. Without, it's parametric and the rare endpoints blur."
+_避免：_“工作记忆”——上下文知识是*现在*窗口中的内容； [记忆系统](#记忆系统) 是将跨会话内容放入其中的。不同的尺度，不要混为一谈。
 
-### Attention relationship
+_用法：_
 
-When predicting each [token](#token), the [model](#model) factors in every other token in the [context](#context) — some heavily, others barely at all. The pairing between two tokens is an **attention relationship**, and meaningful pairs ("her" with "Sarah", or a `getUser()` call with its `function getUser` definition) influence each other more than unrelated ones. A context of N tokens has on the order of N² relationships.
+“为什么当我粘贴文档时它会钉住API，而我不粘贴文档时它会捏造它？”
 
-*Usage:*
+“有了文档，它就是上下文知识——从页面上阅读。如果没有文档，它就是参数化的，罕见的端点会变得模糊。”
 
-"It keeps confusing the two `user` symbols across the diff — sounds like we're in the [dumb zone](#smart-zone)."
+### 注意力关系
 
-"Yeah, the attention relationship between each call site and its declaration is fighting the other one — same token shape, different bindings. Rename one and the pairings sharpen."
+在预测每个 [Token（令牌）](#token令牌) 时，[模型](#模型) 会考虑 [上下文](#上下文) 中的所有其他标记 — 有些很重要，有些则几乎不考虑。两个标记之间的配对是一种**注意关系**，有意义的配对（“her”与“Sarah”，或 `getUser()` 调用及其 `function getUser` 定义）比不相关的配对对彼此的影响更大。 N 个标记的上下文具有 N² 个关系的顺序。
 
-### Attention budget
+_用法：_
 
-Each [token](#token) has a finite amount of influence to distribute across the rest of the [context](#context). Heavy influence on [one relationship](#attention-relationship) leaves less for others. The budget is per-token and doesn't grow when the context does, which is why long [sessions](#session) dilute.
+“它总把 diff 里的两个 `user` 搞混，听起来像是已经掉进 [智能区](#智能区) 的迟钝段了。”
 
-*Usage:*
+“是的，每个调用站点及其声明之间的注意关系正在与另一个发生冲突 - 相同的Token形状，不同的绑定。重命名其中一个，配对就会变得更加清晰。”
 
-"Why does it keep ignoring the schema I pasted at the top?"
+### 注意力预算
 
-"We're well into the [dumb zone](#smart-zone) — every token's attention budget is fixed, but the context kept growing. The signal on the schema is now competing with thousands of newer tokens."
+每个 [Token（令牌）](#token令牌) 对其余[上下文](#上下文)的“关注能力”是有限的。它会在众多[注意力关系](#注意力关系)中分配，某些关系获得更多权重，另一些更弱。
 
-### Attention degradation
+关键点是：这个预算不会因为上下文变长而等比增加。所以会话越长，平均到每条关系上的信号越稀释。
 
-As a [session](#session) grows, each [token](#token)'s [attention budget](#attention-budget) is spread across more competitors. The signal on any one [meaningful relationship](#attention-relationship) shrinks; noise from irrelevant [context](#context) crowds in. Same [model](#model), same [parameters](#parameters) — just more mouths to feed from the same plate. Cause of the smart zone / dumb [zone effect](#smart-zone).
+_用法：_
 
-*Usage:*
+“为什么后面它老是抓不住前面定好的约束？”
 
-"It's deep in the dumb zone — inventing generics that aren't in the type file."
+“因为注意力预算被更长上下文摊薄了。会话太长时，关键信号会被噪声淹没。”
 
-"Attention degradation. The type definitions are still in context, but the signal on them is buried under everything we've added since. [Clear](#clearing) and reload."
+### 注意力退化
 
-### Smart zone
+随着[会话](#会话)增长，每个 [Token（令牌）](#token令牌) 的[注意力预算](#注意力预算)要分配给更多对象。结果是：关键关系信号变弱，不相关内容噪声变强。
 
-Early in a [session](#session) the [agent](#agent) is in a "smart zone" — sharp, focused, recall is good. As the session grows it drifts into a "dumb zone": sloppier, forgetful, more mistakes — and more \*\*faithfulness [hallucinations](#hallucination). Same [model](#model), same [harness](#harness) — just more [context](#context). The felt effect of [attention degradation](#attention-degradation). On frontier models, the dumb zone commonly begins around 100,000 tokens - though this is debated. [Clear](#clearing) or [compact](#compaction) when the session bloats; don't push through.
+同一个[模型](#模型)、同一个[参数](#参数)，在更长上下文里也可能表现更差。这正是从“智能区”滑向“迟钝区”的常见机制。
 
-_Usage:_
+_用法：_
 
-"It nailed the first three components and just butchered the fourth."
+“类型定义明明还在上下文里，它为什么还是看漏？”
 
-"You're out of the smart zone — same model, just deep into the dumb zone now. Compact and reload the plan, the next component will land."
+“这是注意力退化。信息‘在’不等于信息‘被有效关注’。先清空或压缩再继续。”
 
-## Section 5 — Handoffs
+### 智能区
 
-### Clearing
+在 [会话](#会话) 早期，[智能体（Agent）](#智能体agent) 常处于“智能区”：理解快、注意力集中、关键约束抓得住。随着会话拉长，容易进入“迟钝区”：更容易漏条件、忘上下文、犯低级错，且更常出现忠实性[幻觉](#幻觉)。
 
-Ending the current [session](#session) and starting a fresh one. The next message begins with an empty session and an empty [context window](#context-window). Usually user-driven.
+底层机制通常与[注意力退化](#注意力退化)有关：同一个 [模型](#模型)、同一个 [编排层（Harness）](#编排层harness)，只是 [上下文](#上下文) 越来越重。
 
-*Usage:*
+实务上，一旦你明显感到“越做越飘”，优先 [清空会话](#清空会话) 或 [压缩总结](#压缩总结)，别硬扛。
 
-"It's stuck looping on the failing test."
+_用法：_
 
-"Just clear it — start a fresh session with the plan doc and the test file. No point fighting the existing [context](#context)."
+“前三个模块都很准，第四个开始乱了。”
 
-### Handoff
+“已经离开智能区了。压缩后重载计划，再继续下一块。”
 
-Transferring [agent](#agent) [context](#context) from one [session](#session) to another, with no return path. The carry mechanism varies — a written [handoff artifact](#handoff-artifact), an in-memory summary ([compaction](#compaction)), and others. Distinct from [clearing](#clearing) (no transfer at all). Reasons vary: switching roles (planner → implementer), kicking off an [AFK](#afk) run, fanning out to parallel sessions, or freeing up [context window](#context-window) room.
+## Section 5 — 交接
 
-*Usage:*
+### 清空会话
 
-"Planning session is getting heavy — should I just keep going?"
+结束当前的 [会话](#会话) 并开始新的。下一条消息以空会话和空 [上下文窗口](#上下文窗口) 开头。通常是用户驱动的。
 
-"Do a handoff. Write the decisions to a doc, clear, start the implementation in a fresh session reading from it."
+_用法：_
 
-### Handoff artifact
+“它在失败的测试中陷入循环。”
 
-A document used as the carry mechanism for a [handoff](#handoff) — written by one [session](#session) to be read by another. One way among several (see also **compaction**, [compaction](#compaction)).
+“只需清除它即可 - 使用计划文档和测试文件开始新的会话。没有必要与现有的 [上下文](#上下文) 进行斗争。”
 
-*Usage:*
+### 交接
 
-"How do I split this between the planning [agent](#agent) and the implementing one?"
+将 [智能体（Agent）](#智能体agent) [上下文](#上下文) 从一个 [会话](#会话) 传输到另一个 [会话](#会话)，没有返回路径。承接机制各不相同——写入的 [交接文档](#交接文档)、内存中的摘要 ([压缩总结](#压缩总结)) 等等。与 [清空会话](#清空会话) 不同（根本不传输）。原因各不相同：转换角色（计划者 → 实施者）、启动 [AFK（离开键盘）](#afk离开键盘) 运行、拆分到并行会话或释放 [上下文窗口](#上下文窗口) 空间。
 
-"Have the planner write a handoff artifact — file paths, decisions, constraints. The implementer's session opens with a pointer to the artifact and works from it as its brief."
+_用法：_
 
-### Spec
+“规划会话变得越来越沉重——我应该继续吗？”
 
-A [handoff artifact](#handoff-artifact) describing a multi-[session](#session) piece of work — what's being built, not how each session does its share. Mutates as work progresses. Made of [tickets](#ticket).
+“进行交接。将决策写入文档，明确，在新的会话中读取它并开始实施。”
 
-*Usage:*
+### 交接文档
 
-"Should this all be one session?"
+用作 [交接](#交接) 的承接机制的文档 — 由一个 [会话](#会话) 编写并由另一个 [会话](#会话) 读取。多种方式中的一种（另请参见**压缩**，[压缩总结](#压缩总结)）。
 
-"No, write it up as a spec — break it into tickets, run each one in its own session. Trying to do the whole thing in a single [context](#context) will hit the [dumb zone](#smart-zone) before you're halfway."
+_用法：_
 
-### Ticket
+“我如何在规划 [智能体（Agent）](#智能体agent) 和实施之间划分这一点？”
 
-A [handoff artifact](#handoff-artifact) scoping one [session](#session) of work. Stands alone, or hangs off a [spec](#spec) as one of its children. Tickets can block or be blocked by sibling tickets, so the order of work falls out of their dependency graph rather than a linear plan.
+“让规划者编写一个移交工件 - 文件路径、决策、约束。实施者的会话以指向工件的指针打开，并根据其概要进行工作。”
 
-*Usage:*
+### 规格文档（Spec）
 
-"Where do I start on the migration spec?"
+[规格文档（Spec）](#规格文档spec) 是一种[交接文档](#交接文档)：它描述跨多个[会话](#会话)的目标与边界，重点是“做什么”，而不是每个会话“怎么做”。
 
-"Look at the ticket graph — the schema change blocks the backfill, the backfill blocks the API switch. Pick a leaf and run a session on it."
+Spec 会随着推进持续更新，并进一步拆为多个[任务单（Ticket）](#任务单ticket)分别执行。
 
-### Compaction
+_用法：_
 
-A [handoff](#handoff) done in-memory: the previous [session](#session)'s history is summarised and seeds a fresh session. Lossy — detail traded for headroom. Triggered manually by the user, or [automatically](#autocompact).
+“这个需求要不要直接在一个会话里做完？”
 
-*Usage:*
+“不要硬塞。先写 Spec，再拆任务单分会话推进；否则很容易在中途掉进 [智能区](#智能区) 的迟钝段。”
 
-"[Context](#context)'s getting heavy and I still have the test pass to do."
+### 任务单（Ticket）
 
-"Compact before you start — write what's load-bearing into the summary prompt so the new session keeps the schema decisions and drops the exploration."
+一项 [交接文档](#交接文档) 范围的工作 [会话](#会话)。独立存在，或者作为 [规格文档（Spec）](#规格文档spec) 的子级之一挂在 [规格文档（Spec）](#规格文档spec) 上。票证可以阻止或被同级票证阻止，因此工作顺序不符合其依赖关系图，而不是线性计划。
 
-### Autocompact
+_用法：_
 
-[Compaction](#compaction) triggered automatically by the [harness](#harness) when the [context window](#context-window) approaches full.
+“我从哪里开始了解迁移规范？”
 
-*Usage:*
+“查看票证图 — 架构更改会阻止回填，回填会阻止 API 切换。选择一片叶子并在其上运行会话。”
 
-"It doesn't seem to remember what we decided about the schema earlier."
+### 压缩总结
 
-"Autocompact fired between [turns](#turn) — the early decisions got summarised and we must have lost something. Reload the plan doc, or compact manually next time so you control what gets kept."
+在内存中完成的 [交接](#交接)：总结了前一个 [会话](#会话) 的历史并为新的会话播种。有损——以细节换取余量。由用户手动触发，或 [自动压缩](#自动压缩)。
 
-## Section 6 — Memory and Steering
+_用法：_
 
-### Memory system
+“[上下文](#上下文) 越来越重，但我仍然需要通过测试。”
 
-A system that attempts to make an [agent](#agent) [stateful](#stateful) across [sessions](#session). Persists information into the [environment](#environment) during a session and reloads it into the [context window](#context-window) at the start of future ones, so the agent carries continuity beyond the user [clearing](#clearing) the session.
+“开始之前进行压缩 - 将承载内容写入摘要提示中，以便新会话保留模式决策并放弃探索。”
 
-*Usage:*
+### 自动压缩
 
-"I keep having to re-tell it I'm on Postgres, not MySQL."
+当 [上下文窗口](#上下文窗口) 接近满时，[压缩总结](#压缩总结) 由 [编排层（Harness）](#编排层harness) 自动触发。
 
-"Wire up a memory system — write what it learns to the [filesystem](#filesystem) on the first [turn](#turn), reload it at session start. The [model](#model) itself is [stateless](#stateless); the memory layer fakes continuity."
+_用法：_
+
+“它似乎不记得我们之前对架构做出的决定。”
+
+“Autocompact 在 [轮次](#轮次) 之间触发 - 早期决策已得到总结，我们一定丢失了一些东西。重新加载计划文档，或下次手动压缩，以便您控制保留的内容。”
+
+## Section 6 — 记忆与引导
+
+### 记忆系统
+
+尝试在 [会话](#会话) 上创建 [智能体（Agent）](#智能体agent) [有状态](#有状态) 的系统。在会话期间将信息保留到 [环境](#环境) 中，并在未来会话开始时将其重新加载到 [上下文窗口](#上下文窗口) 中，因此智能体在用户 [清空会话](#清空会话) 会话之外保持连续性。
+
+_用法：_
+
+“我一直不得不重新告诉它我使用的是 Postgres，而不是 MySQL。”
+
+“连接一个内存系统——将它学到的内容写入第一个 [轮次](#轮次) 上的 [文件系统](#文件系统)，在会话开始时重新加载它。[模型](#模型) 本身是 [无状态](#无状态)；内存层伪造了连续性。”
 
 ### AGENTS.md
 
-A file in the [environment](#environment) that the [harness](#harness) loads into the [context window](#context-window) at [session](#session) start — the project's standing brief to the [agent](#agent). Cross-harness convention.
+[环境](#环境) 中的一个文件，[编排层（Harness）](#编排层harness) 在 [会话](#会话) 开始时将其加载到 [上下文窗口](#上下文窗口) 中 — 该项目对 [智能体（Agent）](#智能体agent) 的常规简介。跨编排层约定。
 
-*Avoid:* using AGENTS.md for content that should be [progressively disclosed](#progressive-disclosure) — anything in it pays a [token](#token) cost every [turn](#turn).
+*避免：*将 AGENTS.md 用于应为 [渐进式披露](#渐进式披露) 的内容 — 其中的任何内容每 [轮次](#轮次) 都会支付 [Token（令牌）](#token令牌) 成本。
 
-*Usage:*
+_用法：_
 
-"Why is every session starting with 4k tokens already burned?"
+“为什么每个会话开始时 4k Token都已经被烧毁了？”
 
-"Check AGENTS.md — someone pasted the entire style guide in there instead of putting it behind a [skill](#skill)."
+“检查 AGENTS.md — 有人将整个风格指南粘贴在那里，而不是将其放在 [技能](#技能) 后面。”
 
-### Progressive disclosure
+### 渐进式披露
 
-Loading only the [context](#context) an [agent](#agent) needs right now, with [context pointers](#context-pointer) to the rest. Borrowed from UI design.
+现在仅加载 [上下文](#上下文) 和 [智能体（Agent）](#智能体agent) 所需的内容，其余部分则加载 [上下文指针](#上下文指针) 。借鉴于UI设计。
 
-_Usage:_
+_用法：_
 
-"Should I dump the entire style guide into [AGENTS.md](#agentsmd)?"
+“我应该将整个风格指南转储到 [AGENTS.md](#agentsmd) 中吗？”
 
-"No — progressive disclosure. Reference the style guide as a [skill](#skill) the agent loads when it actually needs to write a component. AGENTS.md pays the [token](#token) cost every [turn](#turn)."
+“不 - 渐进式披露。将样式指南引用为智能体在实际需要编写组件时加载的 [技能](#技能)。AGENTS.md 每 [轮次](#轮次) 支付 [Token（令牌）](#token令牌) 成本。”
 
-### Context pointer
+### 上下文指针
 
-A mention in one document that points to another, so the [agent](#agent) can pull it into the [context window](#context-window) only when the task calls for it. The unit [progressive disclosure](#progressive-disclosure) is built from.
+一个文档中的提及指向另一个文档，因此仅当任务需要时 [智能体（Agent）](#智能体agent) 才能将其拉入 [上下文窗口](#上下文窗口) 中。单元 [渐进式披露](#渐进式披露) 是由其构建的。
 
-_Avoid:_ "reference" — too dry; doesn't convey that following it pulls more context in. "Portal" — too florid.
+_避免：_“参考”——太干；并没有传达出跟随它会引入更多上下文。 “门户”——太华丽了。
 
-_Usage:_
+_用法：_
 
-"AGENTS.md is getting huge."
+“AGENTS.md 正在变得越来越庞大。”
 
-"Most of it should be context pointers, not content. Keep the always-on rules inline; turn the deploy runbook and the style guide into [skills](#skill) and leave a context pointer behind."
+“其中大部分应该是上下文指针，而不是内容。保持始终在线的规则内联；将部署运行手册和样式指南转换为 [技能](#技能) 并留下上下文指针。”
 
-### Skill
+### 技能
 
-A teachable capability bundled as a unit — instructions and resources for doing one task well, kept in the [environment](#environment) until a [context pointer](#context-pointer) pulls it into the [context window](#context-window) for the task at hand. The unit of [progressive disclosure](#progressive-disclosure) in a [harness](#harness).
+捆绑为一个单元的可教授能力 - 做好一项任务的指令和资源，保存在 [环境](#环境) 中，直到 [上下文指针](#上下文指针) 将其拉入 [上下文窗口](#上下文窗口) 来完成手头的任务。 [编排层（Harness）](#编排层harness) 中 [渐进式披露](#渐进式披露) 的单位。
 
-_Avoid:_ "[tool](#tool)" — a tool is what the [agent](#agent) _calls_; a skill is instructions it _reads_.
+_避免：_“[工具](#工具)”——[智能体（Agent）](#智能体agent) *调用*的工具；技能是它*阅读*的指令。
 
-_Usage:_
+_用法：_
 
-"Where should I put the deploy runbook?"
+“我应该将部署运行手册放在哪里？”
 
-"As a skill — the agent loads it only when the task involves deploys. In [AGENTS.md](#agentsmd) it'd burn [tokens](#token) on every [turn](#turn) for something we use weekly."
+“作为一项技能，智能体仅在任务涉及部署时才加载它。在 [AGENTS.md](#agentsmd) 中，它会在每个 [轮次](#轮次) 上消耗 [Token（令牌）](#token令牌)，以供我们每周使用的东西。”
 
-### Subagent
+### 子智能体
 
-An [agent](#agent) spawned by another agent via a [tool call](#tool-call). Runs in its own [session](#session) with its own [context window](#context-window), and reports a single [tool result](#tool-result) back. Distinct from a [handoff](#handoff) — the parent specifically expects a return; a handoff has no return path. **Cannot spawn further subagents** — the tree is one level deep. Subagents exist to isolate [context](#context), not to compose hierarchies.
+[子智能体](#子智能体) 是由另一个[智能体（Agent）](#智能体agent)通过[工具调用](#工具调用)发起的执行单元。它在独立[会话](#会话)和独立[上下文窗口](#上下文窗口)里运行，最终以单个[工具结果](#工具结果)回传给父智能体。
 
-*Usage:*
+它和[交接](#交接)不同：交接通常不期待原路返回；子智能体则明确是“派出去再回传结果”。
 
-"The grep results are blowing out my context."
+当前模型下，子智能体不再继续派生下一层子智能体（单层派生结构）。设计目的在于隔离上下文、控制复杂度，而不是构建多层代理树。
 
-"Spawn a subagent to do the search — it'll burn its own context window on the noise and report back the two file paths you actually need."
+_用法：_
 
-## Section 7 — Patterns of Work
+“这个搜索范围太大，我主会话快装不下了。”
 
-### Human-in-the-loop
+“拆给子智能体做检索，主会话只接收摘要结果。”
 
-A working pattern where one or more humans pair with the [agent](#agent) during a [session](#session) — reviewing, redirecting, or collaborating in real time. The human is present and engaged, not just gating individual actions.
+## Section 7 — 工作模式
 
-*Usage:*
+### 人在回路
 
-"Run this [AFK](#afk) overnight?"
+一种工作模式，其中一个或多个人在 [会话](#会话) 期间与 [智能体（Agent）](#智能体agent) 配对 — 实时审查、重定向或协作。人类在场并参与其中，而不仅仅是限制个人行为。
 
-"No, schema migration — keep it human-in-the-loop. I want to see each step and steer if it picks the wrong column to backfill from."
+_用法：_
 
-### AFK
+“过夜运行这个[AFK（离开键盘）](#afk离开键盘)？”
 
-Away from keyboard. A working pattern where the user kicks off a [session](#session) and leaves the [agent](#agent) to run unattended. The throughput multiplier of AI coding — many AFK sessions can run in parallel while you sleep, eat, or work on something else. Usually requires a permissive [permission mode](#permission-mode) plus [sandboxing](#sandbox) to be safe.
+“不，模式迁移 - 让它保持人性化。我想查看每一步，并指导它是否选择了错误的列进行回填。”
 
-_Avoid:_ "background agent" — centers the machine ("running in the background") rather than the human pattern ("user has walked away"). AFK is the load-bearing fact: the user isn't watching.
+### AFK（离开键盘）
 
-_Usage:_
+[AFK（离开键盘）](#afk离开键盘) 是一种工作模式：用户发起[会话](#会话)后离开，由[智能体（Agent）](#智能体agent)在无人值守状态下继续工作。
 
-"I'm running this AFK — three sandboxed agents on the refactor, reviewing the PRs in the morning."
+它的价值是吞吐量：你可以并行跑多个 AFK 会话，让任务在你休息、开会或处理其他事情时持续推进。
 
-"[Bypass permissions](#agent-mode)?"
+为保证安全，AFK 通常要配合更明确的[权限模式](#权限模式)与[沙箱](#沙箱)。
 
-"Yeah, read-only [filesystem](#filesystem), no network."
+*避免：*只说“后台运行智能体”。AFK 强调的是“人不在场”的协作模式，而不仅是技术执行位置。
 
-### Automated check
+_用法：_
 
-A deterministic verification that runs in the [environment](#environment) — tests, type checks, lints, build, pre-commit hooks. Pass/fail, no judgement. The signal an [agent](#agent) can self-correct from without involving anyone else. A flaky test is a broken check, not a non-check; automated checks are deterministic *by design*.
+“我今晚打算 AFK 跑三条重构支线，明早集中看 PR。”
 
-*Avoid:* "feedback loop" / "backpressure" — both lump checks together with [review](#automated-review). *Avoid:* "test" — tests are automated checks, but not all automated checks are tests.
+“权限怎么配？”
 
-*Usage:*
+“只读文件系统 + 无网络，写操作走审批。”
 
-"The agent keeps shipping broken code in the [AFK](#afk) runs."
+### 自动检查
 
-"What automated checks are wired into the [sandbox](#sandbox)?"
+[自动检查](#自动检查) 指的是在[环境](#环境)中运行的确定性验证流程，例如测试、类型检查、lint、构建或 pre-commit 钩子。
 
-"Just the unit tests."
+它的特点是结果明确：通过或失败，不依赖主观判断。与[自动评审](#自动评审)不同，自动检查不是“评价质量”，而是“校验规则是否满足”。
 
-"Add typecheck and lint — it'll self-correct from those before the PR ever lands."
+*避免：*把自动检查和自动评审混称为“反馈循环”；两者职责不同。
 
-### Automated review
+_用法：_
 
-An [agent](#agent) reviewing another agent's work, often with a different [model](#model) or [system prompt](#system-prompt). Non-deterministic: it forms a judgement. Runs anywhere — pre-merge on a PR, post-hoc on commit history, mid-session as a [subagent](#subagent). An LLM-as-judge in CI is automated review, not an [automated check](#automated-check); what the assertion *does* decides the category, not where it runs.
+“AFK 跑完后经常提交坏代码。”
 
-*Avoid:* "AI review" / "agent review" — too vague to distinguish from the working agent itself.
+“先补齐类型检查和 lint。这样它能在 PR 合并前就基于失败信号自我修正。”
 
-*Usage:*
+### 自动评审
 
-"We're getting too many bad PRs from the [AFK](#afk) runs."
+[自动评审](#自动评审) 是指：一个[智能体（Agent）](#智能体agent)去评审另一个智能体的工作，通常会用不同的[模型](#模型)或不同的[系统提示词](#系统提示词)。
 
-"Add an automated review step before merge — different model, separate system prompt, scoped to security and contract changes."
+它本质上是非确定性的判断过程，和[自动检查](#自动检查)不同：自动检查关注“是否满足明确规则”，自动评审关注“质量是否达标、风险是否可接受”。
 
-### Human review
+可放在不同位置运行：PR 合并前、提交后巡检，或会话中以[子智能体](#子智能体)执行。
 
-The user reading the code the [agent](#agent) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's *description* of what it did does not — narration is not the artifact.
+*避免：*笼统说“AI review”。请明确是自动检查还是自动评审。
 
-*Avoid:* "code review" alone — ambiguous between human and [automated](#automated-review).
+_用法：_
 
-*Usage:*
+“AFK 跑出来的 PR 质量波动太大。”
 
-"I human-reviewed the [AFK](#afk) output."
+“在合并前加一层自动评审：独立模型、独立系统提示词，重点看安全与契约变更。”
 
-"You read the diff or just the summary?"
+### 人工评审
 
-"Diff. The summary said it deleted dead code — turned out the function was called from a generated file."
+用户阅读 [智能体（Agent）](#智能体agent) 生成的代码并对其做出判断。读取差异或更改的文件很重要；阅读特工对其行为的“描述”并不会——叙述不是人工制品。
 
-### Vibe coding
+*避免：*单独使用“代码审查”——在人类和 [自动评审](#自动评审) 之间存在歧义。
 
-A working pattern where the user accepts the [agent](#agent)'s code without [human review](#human-review). The diff is treated as opaque — what matters is whether the program behaves, not what's inside. [Automated review](#automated-review) and [automated checks](#automated-check) may still run; vibe coding is silent on both.
+_用法：_
 
-*Avoid:* "vibe coding" as a synonym for "low-quality AI coding" — the term names the review stance, not the resulting code.
+“我人工审查了 [AFK（离开键盘）](#afk离开键盘) 输出。”
 
-*Usage:*
+“你读了差异还是只读了摘要？”
 
-"Did you read what it changed in the auth flow?"
+“不同。摘要说它删除了死代码 - 结果发现该函数是从生成的文件中调用的。”
 
-"Vibe coded it — login still works, that's all I checked."
+### 氛围编程
 
-"Read the diff before you push, vibing on auth is how secrets leak into logs."
+[氛围编程](#氛围编程) 指的是：用户接受[智能体（Agent）](#智能体agent)生成的代码，但不做[人工评审](#人工评审)。在这种模式里，差异细节通常被视为黑盒，核心标准是“程序是否可用”。
 
-### Design concept
+它不等于“没有任何检查”：你仍然可以保留[自动检查](#自动检查)和[自动评审](#自动评审)。
 
-The shared understanding of what's being built, held in common between user and [agent](#agent) but separate from any asset. Brookes' term (*The Design of Design*): the conversation, [handoff artifacts](#handoff-artifact), and the code are all assets that try to capture or reach the design concept, but none of them *are* it. Quality of the design concept is felt through the quality of the conversation that built it.
+*避免：*把“氛围编程”当“低质量 AI 编码”的同义词。它描述的是审查策略，而不是结果质量本身。
 
-*Usage:*
+_用法：_
 
-"It's writing exactly what I asked for and it's still wrong."
+“这段登录流程你看过 diff 吗？”
 
-"You don't share a design concept yet — it's filling gaps with assumptions. Keep talking until cancellation, refunds, and partial fulfilment all line up between you before you let it write a [spec](#spec)."
+“没有，我是按氛围编程流程走的，主要验证功能是否正常。”
 
-### Grilling
+### 设计概念
 
-A technique for developing a [design concept](#design-concept) with an [agent](#agent): the agent interviews the user Socratically, one decision at a time, proposing a recommended answer for each. Slows the rush to a finished plan — no [handoff artifact](#handoff-artifact) is written until the concept stabilises.
+对正在构建的内容的共同理解，在用户和 [智能体（Agent）](#智能体agent) 之间是共同的，但与任何资产分开。布鲁克斯的术语（_设计的设计_）：对话、[交接文档](#交接文档) 和代码都是试图捕捉或达到设计概念的资产，但它们都不是设计概念。设计理念的质量可以通过构建设计理念的对话质量来感受。
 
-*Usage:*
+_用法：_
 
-"It went straight to writing the [spec](#spec) and got the cancellation logic wrong."
+“它完全按照我的要求写的，但它仍然是错误的。”
 
-"Grill it first — make it ask you about partial cancels, refunds, and timing before it commits anything to the doc. Cheaper to resolve in conversation than in code."
+“你们还没有分享一个设计概念——它正在用假设填补空白。继续讨论，直到取消、退款和部分履行都在你们之间排队，然后才让它写下[规格文档（Spec）](#规格文档spec)。”
+
+### 追问式澄清
+
+一种开发带有 [智能体（Agent）](#智能体agent) 的 [设计概念](#设计概念) 的技术：智能体以苏格拉底式的方式采访用户，一次一个决定，为每个决定提出一个推荐答案。减缓了完成计划的速度——在概念稳定之前不会编写[交接文档](#交接文档)。
+
+_用法：_
+
+“它直接写入 [规格文档（Spec）](#规格文档spec) 并导致取消逻辑错误。”
+
+“先进行烧烤——让它在向文档提交任何内容之前询问您有关部分取消、退款和时间安排的信息。通过对话解决比通过代码更便宜。”
 

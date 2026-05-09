@@ -1,12 +1,13 @@
 ---
-description: The atomic unit a model reads and writes. Roughly word-sized but not exactly. Context window size, cost, and latency all count tokens.
+description: 模型读写的最小单位。成本、上下文容量和延迟都按 Token 计。
 ---
-The atomic unit a [model](./Model.md) reads and writes. Roughly word-sized but not exactly — common words are one token, rare or long ones split into several. [Context window](./Context%20window.md) size, cost, and latency are all counted in tokens.
 
-*Avoid:* "word" — token boundaries don't match word boundaries, and tokens-per-second / tokens-per-dollar are the units that actually matter.
+[模型](./Model.md)读写的原子单位。大致接近“词”，但并不等于词：常见词可能是一个 Token，罕见词或长词可能会被切成多个。 [上下文窗口](./Context%20window.md)大小、调用成本和延迟都按 Token 计。
 
-*Usage:*
+*避免：*把它叫“单词”。Token 边界并不等于词边界，真正有用的单位是 token/s 和 token/$。
 
-"How big is this prompt going to be?"
+_用法：_
 
-"Run it through the tokenizer — the schema's compact but the JSON keys are weird, so they'll split into more tokens than you think."
+“为什么这次改动这么贵？”
+
+“因为 Token 用量太高了，不是代码行数高。先看输入和输出 Token 分布。”

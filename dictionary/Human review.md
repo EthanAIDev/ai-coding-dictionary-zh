@@ -1,14 +1,15 @@
 ---
-description: The user reading the code the agent produced and forming a judgement on it. Reading the diff counts; reading the summary doesn't.
+description: 用户阅读智能体生成的代码并对其做出判断。读取差异计数；阅读摘要则不然。
 ---
-The user reading the code the [agent](./Agent.md) produced and forming a judgement on it. Reading the diff or the changed files counts; reading the agent's *description* of what it did does not — narration is not the artifact.
 
-*Avoid:* "code review" alone — ambiguous between human and [automated](./Automated%20review.md).
+用户阅读 [智能体（Agent）](./Agent.md) 生成的代码并对其做出判断。读取差异或更改的文件很重要；阅读特工对其行为的“描述”并不会——叙述不是人工制品。
 
-*Usage:*
+*避免：*单独使用“代码审查”——在人类和 [自动评审](./Automated%20review.md) 之间存在歧义。
 
-"I human-reviewed the [AFK](./AFK.md) output."
+_用法：_
 
-"You read the diff or just the summary?"
+“我人工审查了 [AFK（离开键盘）](./AFK.md) 输出。”
 
-"Diff. The summary said it deleted dead code — turned out the function was called from a generated file."
+“你读了差异还是只读了摘要？”
+
+“不同。摘要说它删除了死代码 - 结果发现该函数是从生成的文件中调用的。”

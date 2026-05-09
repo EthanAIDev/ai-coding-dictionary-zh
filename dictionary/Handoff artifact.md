@@ -1,10 +1,11 @@
 ---
-description: A document used as the carry mechanism for a handoff — written by one session to be read by another.
+description: 用作切换携带机制的文档 — 由一个会话编写以供另一个会话读取。
 ---
-A document used as the carry mechanism for a [handoff](./Handoff.md) — written by one [session](./Session.md) to be read by another. One way among several (see also **compaction**, [compaction](./Compaction.md)).
 
-*Usage:*
+用作 [交接](./Handoff.md) 的承接机制的文档 — 由一个 [会话](./Session.md) 编写并由另一个 [会话](./Session.md) 读取。多种方式中的一种（另请参见**压缩**，[压缩总结](./Compaction.md)）。
 
-"How do I split this between the planning [agent](./Agent.md) and the implementing one?"
+_用法：_
 
-"Have the planner write a handoff artifact — file paths, decisions, constraints. The implementer's session opens with a pointer to the artifact and works from it as its brief."
+“我如何在规划 [智能体（Agent）](./Agent.md) 和实施之间划分这一点？”
+
+“让规划者编写一个移交工件 - 文件路径、决策、约束。实施者的会话以指向工件的指针打开，并根据其概要进行工作。”

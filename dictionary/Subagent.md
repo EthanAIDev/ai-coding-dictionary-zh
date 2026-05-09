@@ -1,10 +1,15 @@
 ---
-description: An agent spawned by another agent via a tool call. Runs in its own session, reports a single tool result. Cannot spawn further subagents.
+description: 由父智能体发起的子智能体，运行在独立会话中，并通过单个工具结果回传。
 ---
-An [agent](./Agent.md) spawned by another agent via a [tool call](./Tool%20call.md). Runs in its own [session](./Session.md) with its own [context window](./Context%20window.md), and reports a single [tool result](./Tool%20result.md) back. Distinct from a [handoff](./Handoff.md) — the parent specifically expects a return; a handoff has no return path. **Cannot spawn further subagents** — the tree is one level deep. Subagents exist to isolate [context](./Context.md), not to compose hierarchies.
 
-*Usage:*
+[子智能体](./Subagent.md) 是由另一个[智能体（Agent）](./Agent.md)通过[工具调用](./Tool%20call.md)发起的执行单元。它在独立[会话](./Session.md)和独立[上下文窗口](./Context%20window.md)里运行，最终以单个[工具结果](./Tool%20result.md)回传给父智能体。
 
-"The grep results are blowing out my context."
+它和[交接](./Handoff.md)不同：交接通常不期待原路返回；子智能体则明确是“派出去再回传结果”。
 
-"Spawn a subagent to do the search — it'll burn its own context window on the noise and report back the two file paths you actually need."
+当前模型下，子智能体不再继续派生下一层子智能体（单层派生结构）。设计目的在于隔离上下文、控制复杂度，而不是构建多层代理树。
+
+_用法：_
+
+“这个搜索范围太大，我主会话快装不下了。”
+
+“拆给子智能体做检索，主会话只接收摘要结果。”

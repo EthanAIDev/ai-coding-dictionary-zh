@@ -1,12 +1,13 @@
 ---
-description: The provider-side store that lets consecutive requests skip re-processing a shared prefix, billing those tokens at a lower rate.
+description: 前缀缓存：模型提供商复用请求共同前缀的处理结果，从而降低输入 Token 成本。
 ---
-The [provider](./Model%20provider.md)-side store that lets consecutive [model provider requests](./Model%20provider%20request.md) skip re-processing a shared prefix. When the start of a request matches the start of a recent one — same [system prompt](./System%20prompt.md), same history up to some point — the provider reuses its prior work and bills those [tokens](./Token.md) as [cache tokens](./Cache%20tokens.md) at a much lower rate.
 
-Anything that changes the prefix (reordering files, rewriting the system prompt mid-[session](./Session.md), injecting a timestamp near the top) invalidates the cache from that point on, and the rest of the request bills at full [input token](./Input%20tokens.md) rate.
+[前缀缓存](./Prefix%20cache.md) 是模型提供商侧的复用机制：当连续[模型提供商请求](./Model%20provider%20request.md)开头部分一致（如相同[系统提示词](./System%20prompt.md)+相似历史前缀），提供商会复用已有计算，把对应 [Token（令牌）](./Token.md) 按更低费率计费。
 
-_Usage:_
+任何会改变前缀的操作（例如改系统提示词、重排上文、在前部注入时间戳）都可能让缓存从变化点失效，后续请求回到普通[输入 Token](./Input%20tokens.md)计费。
 
-"Why did the bill spike halfway through the session?"
+_用法：_
 
-"[Harness](./Harness.md) started injecting the current time into the system prompt every [turn](./Turn.md). Prefix cache breaks at the first changed token, so every request after that billed at full rate."
+“为什么会话跑到一半，账单突然跳高？”
+
+“编排层在每轮都注入当前时间，导致前缀每次变化，缓存命中断掉了。”

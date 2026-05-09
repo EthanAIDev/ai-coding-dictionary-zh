@@ -1,10 +1,11 @@
 ---
-description: What the harness sends back after executing a tool call — file contents, output, or error. The agent's only window onto the environment.
+description: 执行工具调用后，编排层发回的内容 — 文件内容、输出或错误。智能体了解环境的唯一窗口。
 ---
-What the [harness](./Harness.md) sends back after executing a [tool call](./Tool%20call.md) — the file contents, the command output, the error. The [agent](./Agent.md)'s only window onto the [environment](./Environment.md). Travels back to the [model](./Model.md) in the *next* [model provider request](./Model%20provider%20request.md), where the model decides what to do with it. Tool call and tool result are two ends of the same exchange, both inside one [turn](./Turn.md).
 
-*Usage:*
+执行 [工具调用](./Tool%20call.md) 后 [编排层（Harness）](./Harness.md) 发回的内容 — 文件内容、命令输出、错误。 [智能体（Agent）](./Agent.md) 是通往 [环境](./Environment.md) 的唯一窗口。返回到*下一个* [模型提供商请求](./Model%20provider%20request.md) 中的 [模型](./Model.md)，模型决定如何处理它。工具调用和工具结果是同一交换的两端，都在一个 [轮次](./Turn.md) 内。
 
-"It's reasoning about the file like it's empty."
+_用法：_
 
-"The tool result came back as a permission denial, not the contents. The model only saw the error string — it has no other window onto the file."
+“它对文件进行推理，就像它是空的一样。”
+
+“工具返回的结果是权限拒绝，而不是内容。该模型只看到了错误字符串 - 它没有其他窗口可以看到该文件。”

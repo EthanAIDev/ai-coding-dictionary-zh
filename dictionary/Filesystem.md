@@ -1,10 +1,11 @@
 ---
-description: A tree of files and directories the agent reads from, writes to, and executes within — the default environment for a coding agent.
+description: 智能体在其中读取、写入和执行的文件和目录树 - 编码智能体的默认环境。
 ---
-A tree of files and directories the [agent](./Agent.md) reads from, writes to, and executes within — the default kind of [environment](./Environment.md) for a coding agent. [AGENTS.md](./AGENTS.md.md), [skills](./Skill.md), source code, build scripts, and [tool](./Tool.md) configs all live in a filesystem. When a [harness](./Harness.md) "starts in your project," it's pointing the agent at a filesystem.
 
-*Usage:*
+[智能体（Agent）](./Agent.md) 在其中读取、写入和执行的文件和目录树 - 编码智能体的默认类型 [环境](./Environment.md)。 [AGENTS.md](./AGENTS.md.md)、[技能](./Skill.md)、源代码、构建脚本和 [工具](./Tool.md) 配置都位于文件系统中。当 [编排层（Harness）](./Harness.md) “在您的项目中启动”时，它将智能体指向文件系统。
 
-"Why isn't it picking up my AGENTS.md?"
+_用法：_
 
-"It's running against a different filesystem — the [sandbox](./Sandbox.md) mounted the parent dir, not the project root. Repoint the harness."
+“为什么它不接收我的 AGENTS.md？”
+
+“它针对不同的文件系统运行 - [沙箱](./Sandbox.md) 安装了父目录，而不是项目根目录。重新指向编排层。”

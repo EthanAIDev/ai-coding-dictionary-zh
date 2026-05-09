@@ -1,12 +1,13 @@
 ---
-description: Everything the model sees on each model provider request. Finite, model-specific, the only surface through which the model perceives.
+description: 模型在每个模型提供商请求中看到的所有内容。有限的、特定于模型的、模型感知的唯一表面。
 ---
-Everything the [model](./Model.md) sees on each [model provider request](./Model%20provider%20request.md). Finite, model-specific, and the *only* surface through which the model perceives anything.
 
-*Avoid:* "memory" — the context window is working state and doesn't persist across [sessions](./Session.md). [Memory](./Memory%20system.md) is a separate concept layered on top.
+[模型](./Model.md) 在每个 [模型提供商请求](./Model%20provider%20request.md) 上看到的所有内容。有限的、特定于模型的、模型感知任何事物的“唯一”表面。
 
-*Usage:*
+_避免：_“内存”——上下文窗口处于工作状态，并且不会在 [会话](./Session.md) 上持续存在。 [记忆系统](./Memory%20system.md) 是一个位于顶层的独立概念。
 
-"Can I just paste the whole monorepo into the prompt?"
+_用法：_
 
-"The context window's 200k [tokens](./Token.md) — that's maybe a fifth of the repo. Pick the files the task touches, leave the rest behind a [tool call](./Tool%20call.md)."
+“我可以将整个 monorepo 粘贴到提示中吗？”
+
+“上下文窗口有 200k [Token（令牌）](./Token.md) — 这可能是存储库的五分之一。选择任务涉及的文件，将其余的留在 [工具调用](./Tool%20call.md) 后面。”

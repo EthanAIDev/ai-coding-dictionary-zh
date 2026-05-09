@@ -1,10 +1,13 @@
 ---
-description: Each token has a finite amount of influence to distribute across the rest of the context. Per-token, doesn't grow when context does.
+description: 每个 Token 的注意力预算是有限的；上下文越长，单位关系可分配到的注意力越稀释。
 ---
-Each [token](./Token.md) has a finite amount of influence to distribute across the rest of the [context](./Context.md). Heavy influence on [one relationship](./Attention%20relationship.md) leaves less for others. The budget is per-token and doesn't grow when the context does, which is why long [sessions](./Session.md) dilute.
 
-*Usage:*
+每个 [Token（令牌）](./Token.md) 对其余[上下文](./Context.md)的“关注能力”是有限的。它会在众多[注意力关系](./Attention%20relationship.md)中分配，某些关系获得更多权重，另一些更弱。
 
-"Why does it keep ignoring the schema I pasted at the top?"
+关键点是：这个预算不会因为上下文变长而等比增加。所以会话越长，平均到每条关系上的信号越稀释。
 
-"We're well into the [dumb zone](./Smart%20zone.md) — every token's attention budget is fixed, but the context kept growing. The signal on the schema is now competing with thousands of newer tokens."
+_用法：_
+
+“为什么后面它老是抓不住前面定好的约束？”
+
+“因为注意力预算被更长上下文摊薄了。会话太长时，关键信号会被噪声淹没。”

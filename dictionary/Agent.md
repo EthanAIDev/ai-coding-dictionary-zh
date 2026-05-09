@@ -1,12 +1,13 @@
 ---
-description: A model harnessed with tools, a system prompt, and a context window, that takes turns with a user. The model in motion.
+description: 被工具、系统提示词和上下文窗口编排起来，并与用户轮流交互的模型。也就是“运行中的模型”。
 ---
-A [model](./Model.md) [harnessed](./Harness.md) with [tools](./Tool.md), a [system prompt](./System%20prompt.md), and a [context window](./Context%20window.md), that takes [turns](./Turn.md) with a user. *Claude Code is an agent. Cursor is an agent. Claude.ai is an agent.* An agent is what you actually talk to — it's the model in motion, configured for a purpose.
 
-*Avoid:* "the AI", "the bot" (too vague — they hide whether you mean the parameters or the harnessed thing).
+一个[模型](./Model.md)被[编排层（Harness）](./Harness.md)包裹后，接入[工具](./Tool.md)、[系统提示词](./System%20prompt.md)和[上下文窗口](./Context%20window.md)，并与用户按[轮次](./Turn.md)互动，就形成了一个“智能体（Agent）”。_Claude Code 是一种智能体，Cursor 是一种智能体，Claude.ai 也是一种智能体。_ 你真正对话的对象是智能体，而不是裸模型。
 
-*Usage:*
+_避免：_“AI”“机器人”这种说法太笼统，容易混淆你指的是模型参数，还是编排后的系统。
 
-"Which agent are you using for the migration?"
+_用法：_
 
-"Claude Code locally, Cursor for the UI work — same model underneath, different harnesses."
+“这次迁移你用的是哪个智能体？”
+
+“本地用 Claude Code，UI 用 Cursor。底层模型一样，但编排层不一样。”

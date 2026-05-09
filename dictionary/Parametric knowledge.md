@@ -1,10 +1,11 @@
 ---
-description: What the model knows from training, stored in its parameters. Frozen at training time. Counterpart to contextual knowledge.
+description: 模型从训练中了解到的信息存储在其参数中。训练时被冻住了。与情境知识相对应。
 ---
-What the [model](./Model.md) "knows" from [training](./Training.md), stored in its [parameters](./Parameters.md). Frozen at training time — the model can't see its own parameters or update them. Detail is lost in the squeeze: billions of facts cram into a fixed number of parameters, and the rare ones blur. Source of fluency on common topics, and of fabrication on uncommon ones. Counterpart to [contextual knowledge](./Contextual%20knowledge.md).
 
-*Usage:*
+[模型](./Model.md) 从 [训练](./Training.md)“知道”的内容存储在其 [参数](./Parameters.md) 中。在训练时冻结——模型无法看到自己的参数或更新它们。细节在挤压中丢失：数十亿的事实塞进固定数量的参数中，而罕见的事实则变得模糊。对常见话题的流利来源以及对不常见话题的编造。与 [上下文知识](./Contextual%20knowledge.md) 相对应。
 
-"It writes flawless React but invents methods on our internal SDK."
+_用法：_
 
-"React is dense in the parametric knowledge — millions of training examples. Your SDK isn't, so the model fills in plausible-looking shapes. Load the SDK docs into [context](./Context.md)."
+“它编写了完美的 React，但在我们的内部 SDK 上发明了方法。”
+
+“React 的参数知识非常丰富 - 数以百万计的训练示例。而您的 SDK 则不然，因此模型会填充看似合理的形状。将 SDK 文档加载到 [上下文](./Context.md) 中。”

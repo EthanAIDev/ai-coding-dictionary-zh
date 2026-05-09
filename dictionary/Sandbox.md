@@ -1,13 +1,14 @@
 ---
-description: An isolated environment the agent runs inside — container, VM, or restricted shell. Limits the blast radius of agent actions.
-aliases:
-  - Sandboxing
-  - Sandbox / Sandboxing
+description: 智能体在其中运行的隔离环境 - 容器、VM 或受限 shell。限制特工行动的爆炸半径。
+别名：
+- 沙盒
+- 沙盒/沙盒
 ---
-An isolated [environment](./Environment.md) the [agent](./Agent.md) runs inside — a container, VM, ephemeral [filesystem](./Filesystem.md), or restricted-permission shell. Limits the blast radius of agent actions: even if the agent runs destructive commands or fetches something malicious, the damage is contained. The safety substrate that makes [AFK](./AFK.md) practical.
 
-*Usage:*
+[智能体（Agent）](./Agent.md) 在一个隔离的 [环境](./Environment.md) 内部运行 - 容器、虚拟机、临时 [文件系统](./Filesystem.md) 或受限权限 shell。限制智能体操作的爆炸半径：即使智能体运行破坏性命令或获取恶意内容，损害也会受到控制。使 [AFK（离开键盘）](./AFK.md) 变得实用的安全基础。
 
-"I want to let it run [bypass-permissions](./Agent%20mode.md) overnight but I'm not ready for that."
+_用法：_
 
-"Put it in a sandbox — fresh container, no credentials mounted, no network out. Worst case it nukes its own filesystem and you discard the container."
+“我想让它过夜运行[智能体模式](./Agent%20mode.md)，但我还没准备好。”
+
+“把它放在沙箱中——新的容器，没有安装凭据，没有网络。最坏的情况是它会破坏自己的文件系统，然后你就丢弃容器。”

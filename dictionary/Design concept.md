@@ -1,10 +1,11 @@
 ---
-description: The shared understanding of what's being built, held in common between user and agent but separate from any asset.
+description: 对正在构建的内容的共同理解，在用户和智能体之间是共同的，但与任何资产分开。
 ---
-The shared understanding of what's being built, held in common between user and [agent](./Agent.md) but separate from any asset. Brookes' term (*The Design of Design*): the conversation, [handoff artifacts](./Handoff%20artifact.md), and the code are all assets that try to capture or reach the design concept, but none of them *are* it. Quality of the design concept is felt through the quality of the conversation that built it.
 
-*Usage:*
+对正在构建的内容的共同理解，在用户和 [智能体（Agent）](./Agent.md) 之间是共同的，但与任何资产分开。布鲁克斯的术语（_设计的设计_）：对话、[交接文档](./Handoff%20artifact.md) 和代码都是试图捕捉或达到设计概念的资产，但它们都不是设计概念。设计理念的质量可以通过构建设计理念的对话质量来感受。
 
-"It's writing exactly what I asked for and it's still wrong."
+_用法：_
 
-"You don't share a design concept yet — it's filling gaps with assumptions. Keep talking until cancellation, refunds, and partial fulfilment all line up between you before you let it write a [spec](./Spec.md)."
+“它完全按照我的要求写的，但它仍然是错误的。”
+
+“你们还没有分享一个设计概念——它正在用假设填补空白。继续讨论，直到取消、退款和部分履行都在你们之间排队，然后才让它写下[规格文档（Spec）](./Spec.md)。”

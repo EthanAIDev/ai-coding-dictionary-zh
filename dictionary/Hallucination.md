@@ -1,19 +1,20 @@
 ---
-description: Confidently-wrong model output. Two flavors: factuality (invented facts) and faithfulness (drift from loaded context).
+description: 确信错误的模型输出。两种风格：真实性（虚构的事实）和忠实性（偏离已加载的上下文）。
 ---
-Confidently-wrong [model](./Model.md) output. Two flavors with different causes and fixes:
 
-- *Factuality hallucination* — invented or wrong facts about the world (a function that doesn't exist, a wrong API signature, a fake citation). Caused by [parametric knowledge](./Parametric%20knowledge.md) gaps, often past the [knowledge cutoff](./Knowledge%20cutoff.md). Fix: load the right [contextual knowledge](./Contextual%20knowledge.md).
-- *Faithfulness hallucination* — output drifts from the **contextual knowledge** that's loaded, the user's instructions, or the model's own prior reasoning. Symptom of [attention degradation](./Attention%20degradation.md); worsens in the [dumb zone](./Smart%20zone.md). Fix: [clear](./Clearing.md) or [compact](./Compaction.md).
+确实错误的 [模型](./Model.md) 输出。具有不同原因和修复方法的两种口味：
 
-*Avoid:* "hallucination" as a bare synonym for "wrong" — without naming the flavor, the term has no diagnostic value.
+- _事实幻觉_ — 发明或错误的关于世界的事实（不存在的函数、错误的 API 签名、虚假引用）。由 [参数知识](./Parametric%20knowledge.md) 间隙引起，通常超过 [知识截止日期](./Knowledge%20cutoff.md)。修复：加载正确的[上下文知识](./Contextual%20knowledge.md)。
+- _忠实幻觉_ - 输出偏离加载的**上下文知识**、用户的指令或模型自己的先前推理。 [注意力退化](./Attention%20degradation.md) 的症状； 常见于进入 [智能区](./Smart%20zone.md) 的迟钝段后。修复：[清空会话](./Clearing.md) 或 [压缩总结](./Compaction.md)。
 
-*Usage:*
+_避免：_“幻觉”作为“错误”的同义词——如果不指出其味道，这个术语就没有诊断价值。
 
-"It hallucinated a `parseAsync` method on the schema."
+_用法：_
 
-"Factuality or faithfulness?"
+“它在模式上产生了 `parseAsync` 方法的幻觉。”
 
-"The method exists in the docs I pasted — it just stopped reading them after [turn](./Turn.md) forty."
+“事实还是忠诚？”
 
-"Faithfulness then. Compact and reload, don't bother adding more docs."
+“该方法存在于我粘贴的文档中 - 它只是在 [轮次](./Turn.md) 四十之后停止读取它们。”
+
+“那就忠实吧。压缩并重新加载，不用费心添加更多文档。”

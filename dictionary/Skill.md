@@ -1,13 +1,13 @@
 ---
-description: A teachable capability bundled as a unit — kept out of the context window until a context pointer pulls it in for the task at hand.
+description: 捆绑为一个单元的可教授功能 - 保持在上下文窗口之外，直到上下文指针将其拉入以执行手头的任务。
 ---
 
-A teachable capability bundled as a unit — instructions and resources for doing one task well, kept in the [environment](./Environment.md) until a [context pointer](./Context%20pointer.md) pulls it into the [context window](./Context%20window.md) for the task at hand. The unit of [progressive disclosure](./Progressive%20disclosure.md) in a [harness](./Harness.md).
+捆绑为一个单元的可教授能力 - 做好一项任务的指令和资源，保存在 [环境](./Environment.md) 中，直到 [上下文指针](./Context%20pointer.md) 将其拉入 [上下文窗口](./Context%20window.md) 来完成手头的任务。 [编排层（Harness）](./Harness.md) 中 [渐进式披露](./Progressive%20disclosure.md) 的单位。
 
-_Avoid:_ "[tool](./Tool.md)" — a tool is what the [agent](./Agent.md) _calls_; a skill is instructions it _reads_.
+_避免：_“[工具](./Tool.md)”——[智能体（Agent）](./Agent.md) *调用*的工具；技能是它*阅读*的指令。
 
-_Usage:_
+_用法：_
 
-"Where should I put the deploy runbook?"
+“我应该将部署运行手册放在哪里？”
 
-"As a skill — the agent loads it only when the task involves deploys. In [AGENTS.md](./AGENTS.md.md) it'd burn [tokens](./Token.md) on every [turn](./Turn.md) for something we use weekly."
+“作为一项技能，智能体仅在任务涉及部署时才加载它。在 [AGENTS.md](./AGENTS.md.md) 中，它会在每个 [轮次](./Turn.md) 上消耗 [Token（令牌）](./Token.md)，以供我们每周使用的东西。”

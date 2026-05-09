@@ -1,13 +1,13 @@
 ---
-description: A mention in one document that points to another, so the agent can pull it into context only when the task calls for it.
+description: 一个文档中的提及指向另一个文档，因此只有当任务需要时，智能体才能将其拉入上下文中。
 ---
 
-A mention in one document that points to another, so the [agent](./Agent.md) can pull it into the [context window](./Context%20window.md) only when the task calls for it. The unit [progressive disclosure](./Progressive%20disclosure.md) is built from.
+一个文档中的提及指向另一个文档，因此仅当任务需要时 [智能体（Agent）](./Agent.md) 才能将其拉入 [上下文窗口](./Context%20window.md) 中。单元 [渐进式披露](./Progressive%20disclosure.md) 是由其构建的。
 
-_Avoid:_ "reference" — too dry; doesn't convey that following it pulls more context in. "Portal" — too florid.
+_避免：_“参考”——太干；并没有传达出跟随它会引入更多上下文。 “门户”——太华丽了。
 
-_Usage:_
+_用法：_
 
-"AGENTS.md is getting huge."
+“AGENTS.md 正在变得越来越庞大。”
 
-"Most of it should be context pointers, not content. Keep the always-on rules inline; turn the deploy runbook and the style guide into [skills](./Skill.md) and leave a context pointer behind."
+“其中大部分应该是上下文指针，而不是内容。保持始终在线的规则内联；将部署运行手册和样式指南转换为 [技能](./Skill.md) 并留下上下文指针。”

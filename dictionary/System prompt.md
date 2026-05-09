@@ -1,10 +1,18 @@
 ---
-description: The instructions the harness prepends to every model provider request — the agent's standing brief. Usually stable across a session.
+description: 编排层在每次模型请求前附加的固定指令，定义智能体身份、行为和边界。
 ---
-The instructions the [harness](./Harness.md) prepends to every [model provider request](./Model%20provider%20request.md) — the [agent](./Agent.md)'s standing brief: who it is, how to behave, which [tools](./Tool.md) it can call, what conventions to follow. Usually stable across a [session](./Session.md).
 
-*Usage:*
+[系统提示词](./System%20prompt.md) 是[编排层（Harness）](./Harness.md)在每次[模型提供商请求](./Model%20provider%20request.md)前附加的常驻指令。它通常定义：
 
-"Two harnesses, same [model](./Model.md), totally different behavior on the same prompt."
+- 智能体是谁
+- 应该如何表达与决策
+- 能调用哪些[工具](./Tool.md)
+- 要遵循哪些规则
 
-"Different system prompts. One's tuned for terse code edits, the other for explaining — that's where the divergence lives, before your message even arrives."
+系统提示词往往在一个[会话](./Session.md)内保持稳定，因此它对输出风格和行为边界影响很大。
+
+_用法：_
+
+“同一个模型，为什么两个客户端表现差这么多？”
+
+“先看系统提示词。一个偏执行，一个偏解释，行为会明显不同。”

@@ -1,10 +1,11 @@
 ---
-description: The model's output naming a tool and its arguments — just structured text. The harness has to read it and execute.
+description: 该模型的输出命名了工具及其参数——只是结构化文本。编排层必须读取它并执行。
 ---
-The [model](./Model.md)'s output naming a [tool](./Tool.md) and its arguments — just structured text. It doesn't do anything on its own; the [harness](./Harness.md) has to read it and execute. Produced by the model in one [model provider request](./Model%20provider%20request.md).
 
-*Usage:*
+[模型](./Model.md) 的输出命名了 [工具](./Tool.md) 及其参数——只是结构化文本。它本身不做任何事情； [编排层（Harness）](./Harness.md) 必须读取它并执行。由 [模型提供商请求](./Model%20provider%20request.md) 中的模型制作。
 
-"It said it ran the tests but the file timestamps haven't changed."
+_用法：_
 
-"Look at the transcript — did it actually emit a tool call, or just describe running them? The model produces the call, but if the harness didn't execute it, nothing happened."
+“它说它运行了测试，但文件时间戳没有改变。”
+
+“查看记录 - 它实际上发出了工具调用，还是只是描述了运行它们？模型生成了调用，但如果编排层没有执行它，则什么也不会发生。”

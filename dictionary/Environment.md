@@ -1,12 +1,13 @@
 ---
-description: The world the agent acts on — anything outside the harness that the agent perceives via tool results and changes via tool calls.
+description: 智能体所作用的外部世界：它通过工具结果感知，并通过工具调用改变的对象。
 ---
-The world the [agent](./Agent.md) acts on — anything outside the [harness](./Harness.md) that the agent perceives through [tool results](./Tool%20result.md) and changes through [tool calls](./Tool%20call.md). The harness *runs* the agent; the environment is what the agent *works in*. A file like [`AGENTS.md`](./AGENTS.md.md) lives in the environment; the harness is what loads it into the [context window](./Context%20window.md). A [filesystem](./Filesystem.md) is the most common kind of environment, but not the only one (a database, a remote API, a browser session can all be environments).
 
-*Avoid:* using "environment" for the runtime or the harness itself — the harness is the wrapper, the environment is the workspace.
+“环境”是指[编排层（Harness）](./Harness.md)之外、[智能体（Agent）](./Agent.md)实际工作的世界：它通过[工具结果](./Tool%20result.md)感知环境，通过[工具调用](./Tool%20call.md)改变环境。编排层负责“运行智能体”，环境是“智能体干活的地方”。像 [AGENTS.md](./AGENTS.md.md) 这样的文件属于环境；编排层会把它们装进[上下文窗口](./Context%20window.md)。[文件系统](./Filesystem.md)是最常见的环境类型，但不是唯一的（数据库、远程 API、浏览器会话也都可以是环境）。
 
-*Usage:*
+*避免：*把“环境”用来指运行时或编排层本身。编排层是包装器，环境是工作区。
 
-"The agent can't see the staging DB schema."
+_用法：_
 
-"Wire it into the environment — give it a `psql` [tool](./Tool.md) scoped to read-only on staging. The harness is fine, it just has nothing to act on."
+“智能体看不到临时数据库的 schema。”
+
+“把它接到环境里，给一个只读范围的 `psql` [工具](./Tool.md)。现在安全没问题，但它之前确实无事可做。”

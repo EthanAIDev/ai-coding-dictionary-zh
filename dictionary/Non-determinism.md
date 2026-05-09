@@ -1,16 +1,15 @@
 ---
-description: The same input can produce different output. A property of how models generate text and how providers serve requests.
+description: 非确定性：同样输入可能得到不同输出，这是模型推理的常态属性。
 ---
-The same input can produce different output. Run a [model](./Model.md) twice with identical [context](./Context.md) and you may get two different answers — sometimes a word, sometimes a completely different approach. Nothing in your code has to change for this to happen.
 
-It's a property of how models generate text, and how [model providers](./Model%20provider.md) serve [requests](./Model%20provider%20request.md). There's no setting you can flip to make it go away.
+[非确定性](./Non-determinism.md) 指的是：同样的输入、同样的上下文，模型每次运行结果也可能不同。差异可能很小（个别措辞），也可能很大（思路路径不同）。
 
-Expect a spread of results from an [agent](./Agent.md) on the same task. Some days the model will feel sharp; some days it'll feel like it's lost the plot. Same task, different rolls of the dice.
+这是模型生成机制与服务实现共同带来的属性，不是某个开关没配好；通常也无法完全消除。
 
-Be careful not to over-narrativize this. Humans are pattern-matching machines, and a string of bad runs can feel like proof that "the model got worse this week." Usually it's just the distribution.
+实践上要接受“同题多解”：同一任务出现好结果和差结果都正常。先复跑和对比，再判断是不是系统性问题。
 
-_Usage:_
+_用法：_
 
-"Claude has been awful today. Did they ship a worse version?"
+“今天它怎么突然变笨了，是不是平台偷偷降级了？”
 
-"Probably not — model output is non-deterministic. You're going to have good days and bad days on the same task. Try again tomorrow before you go looking for a cause."
+“未必。先把同任务复跑几次再看趋势；很多时候只是非确定性的自然波动。”

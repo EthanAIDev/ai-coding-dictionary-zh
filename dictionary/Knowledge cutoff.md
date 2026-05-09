@@ -1,10 +1,11 @@
 ---
-description: The date past which a model has no parametric knowledge. Post-cutoff libraries and APIs are fabrication traps unless docs are loaded.
+description: 模型没有参数知识的日期。除非加载文档，否则截止后的库和 API 都是制造陷阱。
 ---
-The date past which a [model](./Model.md) has no [parametric knowledge](./Parametric%20knowledge.md). Libraries, APIs, and events from after the cutoff are fabrication traps unless their docs are loaded as [contextual knowledge](./Contextual%20knowledge.md). Each model release ships with its own cutoff.
 
-*Usage:*
+[模型](./Model.md) 不再有 [参数知识](./Parametric%20knowledge.md) 的日期。截止后的库、API 和事件都是制造陷阱，除非它们的文档作为 [上下文知识](./Contextual%20knowledge.md) 加载。每个型号的发布都有自己的截止日期。
 
-"It keeps writing the v3 SDK syntax — we're on v5."
+_用法：_
 
-"v5 shipped after the knowledge cutoff. Load the v5 changelog as contextual knowledge, otherwise it'll keep fabricating from the older parametric version."
+“它一直在编写 v3 SDK 语法 - 我们正在使用 v5。”
+
+“v5 在知识截止后发布。加载 v5 变更日志作为上下文知识，否则它将继续从旧的参数版本进行构建。”
