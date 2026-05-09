@@ -67,9 +67,10 @@ function parseCurriculum(text: string): Section[] {
         fail(
           `Curriculum.md:${lineNo}: bullet may only contain one "|" separator: ${line}`
         );
-      const key = parts[0];
-      const label = parts[1] ?? parts[0];
-      if (!key) fail(`Curriculum.md:${lineNo}: term key cannot be empty`);
+      const [rawKey, rawLabel] = parts;
+      if (!rawKey) fail(`Curriculum.md:${lineNo}: term key cannot be empty`);
+      const key = rawKey;
+      const label = rawLabel ?? rawKey;
       if (key.trim() !== key || label.trim() !== label)
         fail(`Curriculum.md:${lineNo}: term has surrounding whitespace`);
       if (/[*_`\[]/.test(key) || /[*_`\[]/.test(label))
