@@ -8,6 +8,9 @@
   </a>
 </p>
 
+> 说明：本项目是对原版 **Dictionary of AI Coding** 的中文汉化版本，方便中文开发者学习与查阅。  
+> 原英文项目地址：[https://github.com/mattpocock/dictionary-of-ai-coding](https://github.com/mattpocock/dictionary-of-ai-coding)
+
 # AI 编码词典
 
 **AI 编程常常让人觉得只有专家才玩得转**：术语密、故障怪、账单也不透明。
